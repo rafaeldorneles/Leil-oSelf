@@ -1,0 +1,39 @@
+<!doctype html>
+<html ng-app="AngApplication">
+
+<head>
+    <title>Exemplo cadastro</title>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/AngApplication.js"></script>
+</head>
+
+<body>
+    <div ng-controller="LeilaoController">
+       <form method="POST">
+           <input type="text" ng-model="leilao.dono" placeholder="Dono"/>
+           <input type="text" ng-model="leilao.categoria" placeholder="Categoria"/>
+           <input type="text" ng-model="leilao.descricao" placeholder="Descrição"/>
+           <input type="text" ng-model="leilao.dataHoraInicio" placeholder="Data Inicio"/>
+           <input type="text" ng-model="leilao.dataHoraFinal" placeholder="Data Fim"/>
+           <input type="text" ng-model="leilao.dataHoraExecucao" placeholder="Data Execução"/>
+           <input type="text" ng-model="leilao.endereco" placeholder="Endereco"/>
+           <br clear="all">
+           <input type="submit" value="Cadastrar" ng-click="cadastrar(leilao)"/>
+           <a href="./views/lista.html">Lista</a>
+       </form>
+   </div>
+   <div ng-controller="LanceController">
+       <br clear="all">
+       <br clear="all">
+       <form method="POST">
+           <input type="text" ng-model="lance.interessado" placeholder="Interessado"/>
+           <input type="text" ng-model="lance.valor" placeholder="Valor"/>
+           <input type="text" ng-model="lance.leilao" placeholder="Leilao"/>
+           <br clear="all">
+           <input type="submit" value="Cadastrar" ng-click="cadastrar(lance)"/>
+       </form>
+   </div>
+</body>
+
+</html>

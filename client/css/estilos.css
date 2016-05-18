@@ -1,0 +1,75 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24/04/2016, 10:13:41
+    Author     : allis
+*/
+body ,html{
+    height: 100%;
+}
+
+li{
+    padding-top: 10px;
+}
+
+#cabecalho{
+    background-color: orange;
+    height: 40px;
+}
+
+#txt-cab{
+    text-align: center;
+    color: white;
+    font-size: 25px;
+    margin: 5px;
+}
+
+#menu{
+    background-color: black;
+    text-align: center;
+}
+
+#menuHoriz{
+    background-color: black; 
+    border-color: transparent;
+    text-align: center;
+}
+
+#msg{
+    text-align: center;
+}
+
+#btnMenu{
+    background-color: white;
+}
+
+#foto{
+    height: 125px;
+    width: 125px;
+}
+
+@media (min-width: 768px) {
+    .sidebar-nav .navbar .navbar-collapse {
+        padding: 0;
+        max-height: none;
+    }
+    .sidebar-nav .navbar ul {
+        float: none;
+        text-align: center;
+    }
+    .sidebar-nav .navbar li {
+        float: none;
+        display: block;
+    }
+    .sidebar-nav .navbar li a {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+    .navbar-default{
+        border-color: transparent;
+    }
+}
+

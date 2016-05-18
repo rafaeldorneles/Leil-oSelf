@@ -1,0 +1,9 @@
+{
+    "Database":
+    {
+            "database": "Bancomulti",
+            "host": "localhost",
+            "user": "gabrielschaidhau",
+            "password": ""
+    }
+}

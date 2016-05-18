@@ -1,0 +1,35 @@
+{
+  "name": "leilao-servicos",
+  "version": "0.0.0",
+  "description": "Ferramenta que gerencia leilões online de serviços.",
+  "main": "App.js",
+  "repository": "",
+  "authors": 
+  [
+    {
+      "nome": "Allisson",
+      "email":"alndedigo@gmail.com"
+    },
+    {
+      "nome":"Eduardo",
+      "email":"eduardosouza.developer@gmail.com"
+    },
+    { 
+      "nome":"Gabriel Schaidhauer",
+      "email":"gabriel.schaidhauer@gmail.com"
+    },
+    {
+      "nome":"Gilberto",
+      "email":"beto.wiatrowski@gmail.com"
+    },
+    {
+      "nome": "Rafael",
+      "email":"rafael.bke@gmail.com"
+    }
+  ],
+  "dependencies": 
+  {
+    "express": "~3.2.4",
+    "mysql": "2.10.2"
+  }
+}
