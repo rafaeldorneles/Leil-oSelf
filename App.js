@@ -27,14 +27,22 @@ router.use(express.bodyParser());
 
 //Require do arquivo que configura as rotas das requisições
 require("./src/controller/Routes.js")(router);
-
+var JsonFileReader = require("./src/util/JsonFileReader.js");
 
 //==================================================================
+
+var json = new JsonFileReader();
+var config = json.readFile("config.json");
 
 
 //Inicialização do WebServer========================================
 
-server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0");
+
+process.env.NODE_ENV = config.environment; 
+server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function()
+{
+    console.log(process.env.NODE_ENV);
+});
 
 
 //==================================================================
