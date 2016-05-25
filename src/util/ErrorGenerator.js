@@ -64,10 +64,15 @@ method.getResourceConflictError = function(resource, callback)
 	err.message = "Resource and resource id did not match.";
 	err.resource = resource;
 	err.name = "ERR_RESOURCE_CONFLICT";
-	if(callback)
-		thrower(err, callback);
-	else
-		return err;
+	thrower(err, callback);
+};
+
+method.getNotAuthorizedError = function(callback)
+{
+	var err = new Error();
+	err.message = "You are not authorized to acess this area, please log in.";
+	err.name = "ERR_NOT_AUTHORIZED";
+	thrower(err, callback);
 };
 
 function thrower(err, callback)

@@ -1,8 +1,8 @@
-var Leilao = require("./../model/bean/Leilao.js");
-var LeilaoRN = require("./../model/rn/LeilaoRN.js");
-var LeilaoDAO = require("./../model/dao/LeilaoDAO.js");
-var errorHandler = require("./../util/errorHandler.js");
-var ErrorGenerator = require("./../util/ErrorGenerator.js");
+var Leilao = require("./../model/bean/Leilao");
+var LeilaoRN = require("./../model/rn/LeilaoRN");
+var LeilaoDAO = require("./../model/dao/LeilaoDAO");
+var errorHandler = require("./../util/errorHandler");
+var ErrorGenerator = require("./../util/ErrorGenerator");
 
 module.exports = function (router)
 {
@@ -14,13 +14,15 @@ module.exports = function (router)
         var dao = new LeilaoDAO();
         var leilao = new Leilao();
         var data = request.body;
+        var session = request.session;
 
         //Popula Bean do leilão para validação e persistência
         leilao.popularLeilao(data);
 
         //Monta o escopo onde os dados estarão disponíveis, através de callback e executa o cadastro
-        rn.cadastrar(leilao, dao, function (err, dbResponse)
+        rn.cadastrar(leilao, dao, session, function (err, dbResponse)
         {
+            
             if (err)
             {
                 errorHandler(err, response);
@@ -114,6 +116,7 @@ module.exports = function (router)
         var data = request.body;
         var id = request.params.id;
         var errorGenerator = new ErrorGenerator();
+        var session = request.session;
 
         //Popula Bean do leilão para validação e persistência
         leilao.popularLeilao(data);
@@ -127,7 +130,7 @@ module.exports = function (router)
         }
 
         //Execução do método de edição
-        rn.editar(leilao, dao, function (err, dbResponse)
+        rn.editar(leilao, dao, session, function (err, dbResponse)
         {
             if (err)
             {
@@ -151,6 +154,7 @@ module.exports = function (router)
         var data = JSON.parse(request.query.leilao);
         var id = request.params.id;
         var errorGenerator = new ErrorGenerator();
+        var session = request.session;
 
         //Popula Bean do leilão para validação e persistência
         leilao.popularLeilao(data);
@@ -164,7 +168,7 @@ module.exports = function (router)
         }
 
         //Método que executa a exclusão dos dados
-        rn.deletar(leilao, dao, function (err)
+        rn.deletar(leilao, dao, session, function (err)
         {
             if (err)
                 errorHandler(err, response);

@@ -37,8 +37,10 @@
     },
     "dependencies":
     {
-        "express": "*",
-        "mysql": "*"
+        "express": "4.13.*",
+        "mysql": "2.10.*",
+        "body-parser":  "1.15.*",
+        "express-session": "1.13.*"
     },
     "devDependencies": {},
     "private": true

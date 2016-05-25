@@ -6,5 +6,6 @@
         "user": "",
         "password": ""
     },
-    "environment": "development"
+    "environment": "development",
+    "port" : 3000
 }
