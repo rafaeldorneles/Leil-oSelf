@@ -1,210 +1,140 @@
 <!-- Cabeçalho da Janela -->
-
-<div class="row" style="background-color: gray">
+<div class="row" id="cabPag">
     <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12">
-        <h1 style="text-align: center">Meu perfil</h1>
+        <h1 style="text-align: center">Perfil Pessoa Jurídica</h1>
     </div>
 </div>
 
-
-
-<!DOCTYPE html>
-<html lang="en" ng-app="app">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../angular-ui-switch.css"/>
-     
-        <script src="../angular-ui-switch.js"></script>
-        <script src="app.js"></script>
-    </head>
-    <body>
-
-            <tr ng-repeat="(key, value) in perfil_pessoa | filter: pesquisa">
-        <div class="container col-xs-12 col-lg-12 col-md-12 col-sm-12" style="margin-top: 10px;">
-            <div class="row">
-                <!-- Formulário -->
-                <form role="form">
-                    <div class="form-group">
-                        <label for="pessoa_nome">
-                            Nome
-                           
+<div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 10px;">
+    <div class="row">
+        <form role="form" method="POST">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                        <label for="pessoa">
+                            Fisico / Júridico <br>
                         </label>
-                        <input  type="text"  ng-model="perfil_pessoa.pessoa_nome" class="form-control" id="pessoa_nome" />
-                    </div>
-
-                    <div ng-switch="text" ng-model="color"/>
-                    <div ng-switch-
-
-                         <div class="form-group">
-
-                            <label for="pessoa">
-                                Pessoa:
-                            </label>
-                            <switch name="enabled" ng-model="enabled" ng-change="changeCallback"></switch>
-
-
-
-                            <!--Examples of using switch disabled states. -->
-                            <!-- Aqui tem que configurar par se for pessoa fisica aparecer o campo  cpf e se for juridica o cnpj  
-                            
-                            <switch name="disabled" ng-model="disabled" disabled="true"></switch>
-                            <p>
-                                <button ng-click="disabled = !disabled">Fisica / Juridica</button>
-                                <b> Enabled: </b>{{ disabled}}
-                            </p>
-                            
-                            -->
-
-
-
-                            <form name="form1" id="form1">
-                               <input  id="rdo1" type="radio" name="q1" value="10"  onclick="location.href='#/perfil';">Fisica 
-                                <input   id="rdo2" type="radio" name="q1" value="0">Juridica
-                                  
-       
-                                <script>
-                                            if
-                                </script>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-3 col-lg-3 col-md-3 col-sm-3">
-                                <label for="data_exec">
-                                    Apelido
-                                </label>
-                                <input type="text" ng-model="leilao.data_exec" class="form-control" id="data_exec" placeholder="Biel"/>                        
-                            </div>
-                            <div class="col-xs-3 col-lg-3 col-md-3 col-sm-3">
-                                <label for="cnpj">
-                                    CNPJ
-                                </label>
-                                <input type="text" ng-model="pessoa.cnpj" class="form-control" id="hora_exec" placeholder="Ex.: 00.000.000/0000-00"/>                        
-                            </div>
-                            <div class="col-xs-3 col-lg-3 col-md-3 col-sm-3">
-                                </label>
-                                 <label for="pessoa_telefone">
-                                    Telefone
-                                </label>
-                                <input type="text" ng-model="pessoa.telefone" class="form-control" id="hora_exec" placeholder="Ex.: 000.000.000-00"/>                        
-                            </div>
-                                <label for="data_nascimento">
-                                    Data nascimento
-                                </label>
-                            <div class="col-xs-3 col-lg-3 col-md-3 col-sm-3">
-                                <input type="text" ng-model="pessoa.data_nasc" class="form-control" id="data_limite" placeholder="Ex.: XX/XX/XXXX"/>                        
-                            </div>
-
+                        <div>
+                            <input type="radio" name="op" id="op1" onclick="location.href = '#/perfil'"> Física 
+                            <input type="radio" name="op" id="op2" onclick="location.href = '#/perfil-juridica'"> Jurídica
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="descricao">
-                            Informaçãoes adicionais 
+                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                        <label for="nome">
+                            Nome da Empresa
                         </label>
-                        <textarea ng-model="pessoa.descricao" class="form-control" rows="2" id="descServ" placeholder="Informações adicioanis"></textarea>
+                        <input  type="text"  ng-model="perfil_pessoa.nome" class="form-control" id="pessoa_nome" />
                     </div>
+                </div>
+            </div>
 
-                    <div>
-
-                        <b>Endereço:</b> 
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <label for="username">
+                            Username
+                        </label>
+                        <input type="text" ng-model="perfil_pessoa.username" class="form-control" id="username"/>
                     </div>
-
-                    <!-- configurar tamanho label -->
-
-                    <div class="col-xs-3 col-lg-3 col-md-3 col-sm-3">
-                        <label for="end_cep">
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <label for="cnpj">
+                            CNPJ
+                        </label>
+                        <input type="text" ng-model="perfil_pessoa.cnpj" class="form-control" id="cnpj"/>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <label for="fundacao">
+                            Data de Fundação
+                        </label>
+                        <input type="text" ng-model="perfil_pessoa.fundacao" class="form-control" id="fundacao"/>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <label for="telefone">
+                            Telefone
+                        </label>
+                        <input type="text" ng-model="perfil_pessoa.telefone" class="form-control" id="telefone"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <label for="endreco">
+                            Endereço
+                        </label>
+                        <input type="text" ng-model="perfil_pessoa.endereco" class="form-control" id="endereco"/>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <label for="numero">
+                            Número
+                        </label>
+                        <input type="text" ng-model="perfil_pessoa.numero" class="form-control" id="numero"/>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <label for="complemento">
+                            Complemento
+                        </label>
+                        <input type="text" ng-model="perfil_pessoa.complemento" class="form-control" id="complemento"/>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <label for="cep">
                             CEP
                         </label>
-                        <input type="text" ng-model="pessoa.cep" class="form-control" id="end_rua" placeholder="Ex.: 00000-000"/>
+                        <input type="text" ng-model="perfil_pessoa.cep" class="form-control" id="cep"/>
                     </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-xs-6 col-lg-6 col-md-6 col-sm-6">
-                                <label for="end_rua">
-                                    Rua ou Avenida
-                                </label>
-                                <input type="text" ng-model="pessoa.end_rua" class="form-control" id="end_rua" placeholder="Ex.: Rua Exemplo"/>
-                            </div>
-                            <div class="col-xs-3 col-lg-3 col-md-3 col-sm-3">
-                                <label for="end_nro">
-                                    Número
-                                </label>
-                                <input type="text" ng-model="pessoa.end_nro" class="form-control" id="end_nro" placeholder="Ex.: 1234"/>
-                            </div>
-                            <div class="col-xs-3 col-lg-3 col-md-3 col-sm-3">
-                                <label for="end_compl">
-                                    Complemento
-                                </label>
-                                <input type="text" ng-model="pessoa.end_compl" class="form-control" id="end_compl" placeholder="Ex.: AP.701"/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-xs-6 col-lg-6 col-md-6 col-sm-6">
-                                <label for="end_bairro">
-                                    Bairro
-                                </label>
-                                <input type="text" ng-model="pessoa.end_bairro" class="form-control" id="end_bairo" placeholder="Ex.: Exemplo"/>
-                            </div>
-                            <div class="col-xs-3 col-lg-3 col-md-3 col-sm-3">
-                                <label for="end_cidade">
-                                    Cidade
-                                </label>
-                                <input type="text" ng-model="pessoa.end_cidade" class="form-control" id="end_cidade" placeholder="Ex.: Exemplo"/>
-                            </div>
-                            <div class="col-xs-3 col-lg-3 col-md-3 col-sm-3">
-                                <label for="end_uf">
-                                    Estado
-                                </label>
-                                <input type="text" ng-model="pessoa.end_uf" class="form-control" id="end_uf" placeholder="Ex.: RS"/>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </form>
+                </div>
             </div>
 
-            <!-- Botões -->
-            <div class="row">
-                <button type="button" ng-click="salvar()" class="btn btn-success"><span class="glyphicon glyphicon-save"></span>Salvar</button>
-                <a class="btn btn-danger" href="#/perfil" role="button"><span class="glyphicon glyphicon-menu-left"></span>Cancelar</a>
-              
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <label for="bairro">
+                            Bairro
+                        </label>
+                        <input type="text" ng-model="perfil_pessoa.bairro" class="form-control" id="bairro" />
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <label for="cidade">
+                            Cidade
+                        </label>
+                        <input type="text" ng-model="perfil_pessoa.cidade" class="form-control" id="cidade" />
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <label for="estado">
+                            Estado
+                        </label>
+                        <input type="text" ng-model="perfil_pessoa.estado" class="form-control" id="estado" />
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <label for="referencia">
+                            Ponto de Referência
+                        </label>
+                        <input type="text" ng-model="perfil_pessoa.referencia" class="form-control" id="referencia" />
+                    </div>
+                </div>
             </div>
-            
-              <div align="center" class="form-inline">
-                    </br>
-           
-                <a class="btn btn-primary" href="#/perfil-cadastroServico" role="button"><span class="glyphicon glyphicon-pencil"></span> Cadastra categoria de serviço...</a>
-                
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label for="infoadi">
+                            Informções Adcionais
+                        </label>
+                        <textarea ng-model="perfil_pessoa.infoadi" class="form-control" rows="5" id="infoadi"></textarea>
+                    </div>
+                </div>
             </div>
-            
-            <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>Categoria</th>
-                    <th>Descrição</th>
-                  
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="(key, value) in lista_cadastroServico | filter: pesquisa">
-                    <td>{{value.categoria}}</td>
-                    <td>{{value.descricao}}</td>
-                    <th>
-                        <button type="button" ng-click="excluir(value.id)" class="btn btn-sm btn-danger" alt="Excluir" title="Excluir">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </button>
-                        <button type="button" ng-click="editar(value)" class="btn btn-sm btn-default" alt="Editar" title="Editar">
-                            <span class="glyphicon glyphicon-edit"></span>
-                        </button>
-                    </th>
-                </tr>
-            </tbody>
-        </table>
-            
+        </form>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <button type="button" ng-click="excluir(value.id)" class="btn btn-sm btn-danger" alt="Excluir" title="Excluir">
+                    <span class="glyphicon glyphicon-remove"></span> Excluir
+                </button>
+                <button type="button" ng-click="editar(value)" class="btn btn-sm btn-default" alt="Editar" title="Editar">
+                    <span class="glyphicon glyphicon-edit"></span> Editar
+                </button>
+            </div>
         </div>
+    </div>
+</div>

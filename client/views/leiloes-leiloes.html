@@ -1,15 +1,17 @@
 <div class="row" ng-hide="informacoes">
     <!-- Cabeçalho da Janela -->
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="row" style="background-color: gray">
-            <h1 style="text-align: center">Meus leilões</h1>
+    <div class="row" id="cabPag">
+        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12">
+            <h1 style="text-align: center">Meus Leilões</h1>
         </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <form style="padding-top: 10px;">
             <div class="form-inline">
                 <!--<input type="text" class="form-control" ng-model="pesquisa" />
                 <a class="btn btn-default" href="#/leilao-novo" role="button"><span class="glyphicon glyphicon-pencil"></span> Novo...</a>
-           -->
-                </div>
+                -->
+            </div>
         </form>		
         <hr>		
     </div>
@@ -31,10 +33,10 @@
                 <tr ng-repeat="(key, value) in lista">
                     <td>{{opCategorias.find(value.categoria).text}}</td>
                     <td>{{value.descricao}}</td>
-                   <td>{{value.tempoCorrente}}</td>
-                   <td>{{value.status}}</td>
-                     <td>{{value.lances}}</td>
-                   
+                    <td>{{value.tempoCorrente}}</td>
+                    <td>{{value.status}}</td>
+                    <td>{{value.lances}}</td>
+
                     <th>
                         <button type="button" ng-click="setInfo(value)" class="btn btn-sm btn-primary" alt="Editar" title="Editar">
                             <span class="glyphicon glyphicon-plus-sign"></span> Informações
@@ -47,18 +49,24 @@
 </div>
 
 <div class="row" ng-show="informacoes">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="row" style="background-color: gray">
-            <h1 style="text-align: center">Informações do Leilão</h1>
+    <div class="row" id="cabPag">
+        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12">
+            <h1 style="text-align: center">Meus Leilões</h1>
         </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <form role="form" style="padding-top: 10px;">
             <div class="form-group">
-                <label for="categoria">
-                    Categoria
-                </label>
-               <select ng-model="leilao.categoria" class="form-control" id="categoria" disabled>
-                    <option ng-repeat="cat in opCategorias" ng-selected="leilao.categoria == cat.value" value="{{cat.value}}">{{cat.text}}</option>
-                </select>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label for="categoria">
+                            Categoria
+                        </label>
+                        <select ng-model="leilao.categoria" class="form-control" id="categoria" disabled>
+                            <option ng-repeat="cat in opCategorias" ng-selected="leilao.categoria == cat.value" value="{{cat.value}}">{{cat.text}}</option>
+                        </select>
+                    </div>
+                </div>
             </div>
 
 
@@ -104,10 +112,14 @@
             </div>
 
             <div class="form-group">
-                <label for="descricao">
-                    Descrição do Serviço
-                </label>
-                <textarea ng-model="leilao.descricao" class="form-control" rows="5" id="descServ" readonly="true"></textarea>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label for="descricao">
+                            Descrição do Serviço
+                        </label>
+                        <textarea ng-model="leilao.descricao" class="form-control" rows="5" id="descServ" readonly="true"></textarea>
+                    </div>
+                </div>
             </div>
 
             <!--
@@ -128,7 +140,7 @@
                 </div>
             </div>
             -->
-            
+
             <div class="form-group">
                 <div class="row">
                     <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -182,12 +194,11 @@
                 </div>
             </div>-->
 
-        </div>
-    </div>  
-    </form>
-        <button type="button" ng-click="removeInfo()" class="btn btn-warning"><span class="glyphicon glyphicon-menu-left"></span> Voltar</button>
-        
-       <!-- <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-bitcoin"></span> Dar um lance</button>-->
+                </div>
+            </div>  
         </form>
+        <button type="button" ng-click="removeInfo()" class="btn btn-warning"><span class="glyphicon glyphicon-menu-left"></span> Voltar</button>
+
+        <!-- <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-bitcoin"></span> Dar um lance</button>-->
     </div>
 </div>

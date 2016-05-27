@@ -7,69 +7,73 @@ and open the template in the editor.
     Created on : 24/04/2016, 10:13:41
     Author     : allis
 */
-body ,html{
-    height: 100%;
+
+
+.row{
+    margin: 0;
+    padding: 0;
 }
 
-li{
-    padding-top: 10px;
+#conteudo{
+    padding-top: 50px;
+    padding-bottom: 75px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 0;
+}
+
+#rodape{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background-color: black;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 #cabecalho{
-    background-color: orange;
-    height: 40px;
-}
-
-#txt-cab{
-    text-align: center;
-    color: white;
-    font-size: 25px;
-    margin: 5px;
-}
-
-#menu{
     background-color: black;
+    color: white;
+    margin: 0px;
+    border: 0px;
+}
+
+#menuIcon{
+    width: 25px;
+}
+
+#logoCab{
+    padding-top: 5px;
+    width: 140px;
+}
+
+#btnTXT{
+    font-size: 14px;
+    color: white;
+    text-align: left;
+}
+
+#btnTXT:hover{
+    color: orange;
+    font-size:125%;
+}
+
+#cabPag{
+    background-color: gray;
+    color: white;
+}
+
+h3,h1{
+    margin: 10px;
     text-align: center;
 }
 
-#menuHoriz{
-    background-color: black; 
-    border-color: transparent;
-    text-align: center;
+#btnRespons{
+    color: black;
+    background-color: orange;
+    border: 0px;
 }
 
-#msg{
-    text-align: center;
+*{
+    font-family: helvetica;
 }
-
-#btnMenu{
-    background-color: white;
-}
-
-#foto{
-    height: 125px;
-    width: 125px;
-}
-
-@media (min-width: 768px) {
-    .sidebar-nav .navbar .navbar-collapse {
-        padding: 0;
-        max-height: none;
-    }
-    .sidebar-nav .navbar ul {
-        float: none;
-        text-align: center;
-    }
-    .sidebar-nav .navbar li {
-        float: none;
-        display: block;
-    }
-    .sidebar-nav .navbar li a {
-        padding-top: 12px;
-        padding-bottom: 12px;
-    }
-    .navbar-default{
-        border-color: transparent;
-    }
-}
-
