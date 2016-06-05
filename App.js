@@ -71,15 +71,6 @@ console.log("INFO: Starting Server");
 server.listen(process.env.PORT, function()
 {
     console.log("INFO: Server Started Listening at: " + "http://"+server.address().address + ":" + process.env.PORT);
-    
-    var DAO = require("./src/model/dao/LanceDAO");
-    var RN = require('./src/model/rn/LanceRN');
-    var dao = new DAO();
-    var rn = new RN();
-    rn.getWinner("57543c45029eaf0e815be10b", dao, function ()
-    {
-        
-    });
 });
 
 //==================================================================

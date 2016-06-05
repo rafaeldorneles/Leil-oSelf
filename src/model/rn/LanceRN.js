@@ -37,7 +37,7 @@ method.getWinner = function (idLeilao, dao, callback)
             var points = interessado.ranking;
             points = points - (valor/moneyImportance);
             
-            console.log(interessado.nome + " - " + interessado.ranking + " - " + valor + " - " + points);
+            //console.log(interessado.nome + " - " + interessado.ranking + " - " + valor + " - " + points);
             
             if(!winner)
             {
@@ -54,7 +54,7 @@ method.getWinner = function (idLeilao, dao, callback)
             }
         }
         
-        console.log(winner);
+        //console.log(winner);
         if(callback)
             callback(err, winner);
         else
