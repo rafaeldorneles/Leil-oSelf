@@ -14,8 +14,8 @@ function LeilaoRN()
 
 method.cadastrar = function (leilao, dao, session, callback)
 {
-    //if(!isLogged(session, this.sessionManager, this.errorGenerator, callback))
-        //return;
+    if(!isLogged(session, this.sessionManager, this.errorGenerator, callback))
+        return;
     
     if (isNull(leilao, callback, this.errorGenerator))
         return;
