@@ -1,10 +1,11 @@
 var method = Lance.prototype;
 
-//Listagem de Atributos
+//Listagem de Atributo
 this.id;
 this.valor;
 this.interessado;
 this.leilao;
+this.dataHora;
 
 function Lance()
 {
@@ -34,6 +35,10 @@ method.setLeilao = function(leilao)
 	this.leilao = leilao;
 }
 
+method.setDataHora = function (dataHora)
+{
+    this.dataHora = dataHora;
+};
 
 //=========================================GETTERS===========================
 
@@ -56,18 +61,20 @@ method.getLeilao = function()
 {
 	return this.leilao;
 }
+
+method.getDataHora = function ()
+{
+    return this.dataHora;
+};
 //=====================================OUTROS=================================
 
 method.popularLance = function(lance)
 {
-	var Leilao = require("./Leilao.js");
-	var leilao = new Leilao();
-	leilao.popularLeilao(lance.leilao);
-	
-	this.setId(lance.id);
-	this.setInteressado(lance.interessado);
-	this.setValor(lance.valor);
-	this.setLeilao(leilao);
-}
+    this.setId(lance._id);
+    this.setInteressado(lance.interessado);
+    this.setValor(lance.valor);
+    this.setLeilao(lance.leilao);
+    this.setDataHora(lance.datahora);
+};
 
 module.exports = Lance;

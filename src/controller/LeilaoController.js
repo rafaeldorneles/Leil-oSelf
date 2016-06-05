@@ -28,7 +28,7 @@ module.exports = function (router)
                 errorHandler(err, response);
             } else
             {
-                response.location("https://" + request.host + "/leiloes/" + dbResponse.insertId);
+                response.location("http://" + request.hostname + "/leiloes/" + dbResponse);
                 response.status(201).send({message: "Leilão cadastrado com sucesso!"});
             }
         });
@@ -74,7 +74,7 @@ module.exports = function (router)
                 errorHandler(err, response);
             } else
             {
-                response.status(200).send({leilao: leilao.retrieveLeilao()});
+                response.status(200).send({leilao: leilao});
             }
         });
 
@@ -124,7 +124,7 @@ module.exports = function (router)
         if (leilao.getId() != id)
         {
             var error = errorGenerator.getResourceConflictError("id");
-            response.location("https://" + request.host + "/leiloes/" + leilao.getId());
+            response.location("http://" + request.host + "/leiloes/" + leilao.getId());
             errorHandler(error, response, 403);
             return;
         }
@@ -137,7 +137,7 @@ module.exports = function (router)
                 errorHandler(err, response, 304);
             } else
             {
-                response.location("https://" + request.host + "/leiloes/" + request.params.id);
+                response.location("http://" + request.host + "/leiloes/" + request.params.id);
                 response.status(200).send({message: "Leilão editado com sucesso!"});
             }
         });
@@ -162,7 +162,7 @@ module.exports = function (router)
         if (leilao.getId() != id)
         {
             var error = errorGenerator.getResourceConflictError("id");
-            response.location("https://" + request.host + "/leiloes/" + leilao.getId());
+            response.location("http://" + request.host + "/leiloes/" + leilao.getId());
             errorHandler(error, response, 403);
             return;
         }

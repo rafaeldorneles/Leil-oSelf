@@ -1,7 +1,6 @@
 var method = Endereco.prototype;
 
 //Listagem de atributos
-
 this.id;
 this.logradouro;
 this.numero;

@@ -1,9 +1,8 @@
 var method = Leilao.prototype;
-var dateConverter = require("./../../util/dateConverter.js");
-var formatter = require("./../../util/dateFormatter.js");
+
+
 
 //Listagem de Atributos
-
 this.id;
 this.dono;
 this.categoria;
@@ -15,121 +14,106 @@ this.endereco;
 
 function Leilao()
 {
-	
+
 };
 
 //==================================SETTERS======================
 
-method.setId = function(id)
+method.setId = function (id)
 {
-	this.id = id;
+    this.id = id;
 };
 
-method.setDono = function(dono)
+method.setDono = function (dono)
 {
-	this.dono = dono;
+    this.dono = dono;
 };
 
-method.setCategoria = function(categoria)
+method.setCategoria = function (categoria)
 {
-	this.categoria = categoria;
+    this.categoria = categoria;
 };
 
-method.setDescricao = function(descricao)
+method.setDescricao = function (descricao)
 {
-	this.descricao = descricao;
+    this.descricao = descricao;
 };
 
-method.setDataHoraInicio = function(dataHoraInicio)
+method.setDataHoraInicio = function (dataHoraInicio)
 {
-	this.dataHoraInicio = dateConverter(dataHoraInicio);
+    this.dataHoraInicio = new Date(dataHoraInicio);
 };
 
-method.setDataHoraFinal = function(dataHoraFinal)
+method.setDataHoraFinal = function (dataHoraFinal)
 {
-	this.dataHoraFinal = dateConverter(dataHoraFinal);
+    this.dataHoraFinal = new Date(dataHoraFinal);
 };
 
-method.setDataHoraExecucao = function(dataHoraExecucao)
+method.setDataHoraExecucao = function (dataHoraExecucao)
 {
-	this.dataHoraExecucao = dateConverter(dataHoraExecucao);
+    this.dataHoraExecucao = new Date(dataHoraExecucao);
 };
 
-method.setEndereco = function(endereco)
+method.setEndereco = function (endereco)
 {
-	this.endereco = endereco;
+    this.endereco = endereco;
 };
 
 //==================================GETTERS======================
 
-method.getId = function()
+method.getId = function ()
 {
-	return this.id;
+    return this.id;
 };
 
-method.getDono = function()
+method.getDono = function ()
 {
-	return 6;
+    return 6;
 };
 
-method.getCategoria = function()
+method.getCategoria = function ()
 {
-	return this.categoria;
+    return this.categoria;
 };
 
-method.getDescricao = function()
+method.getDescricao = function ()
 {
-	return this.descricao;
+    return this.descricao;
 };
 
-method.getDataHoraInicio = function()
+method.getDataHoraInicio = function ()
 {
-	return this.dataHoraInicio;
+    return this.dataHoraInicio;
 };
 
-method.getDataHoraFinal = function()
+method.getDataHoraFinal = function ()
 {
-	return this.dataHoraFinal;
+    return this.dataHoraFinal;
 };
 
-method.getDataHoraExecucao = function()
+method.getDataHoraExecucao = function ()
 {
-	return this.dataHoraExecucao;
+    return this.dataHoraExecucao;
 };
 
-method.getEndereco = function()
+method.getEndereco = function ()
 {
-	return this.endereco;
+    return this.endereco;
 };
 
 //================================OUTROS========================
 
-method.popularLeilao = function(leilao)
+method.popularLeilao = function (leilao)
 {
-	this.setId(leilao.id);
-	this.setDono(leilao.dono);
-	this.setCategoria(leilao.categoria);
-	this.setDescricao(leilao.descricao);
-	this.setDataHoraInicio(leilao.dataHoraInicio);
-	this.setDataHoraFinal(leilao.dataHoraFinal);
-	this.setDataHoraExecucao(leilao.dataHoraExecucao);
-	this.setEndereco(leilao.endereco);
+    this.setId(leilao._id);
+    this.setDono(leilao.dono);
+    this.setCategoria(leilao.categoria);
+    this.setDescricao(leilao.descricao);
+    this.setDataHoraInicio(leilao.dataHoraInicio);
+    this.setDataHoraFinal(leilao.dataHoraFinal);
+    this.setDataHoraExecucao(leilao.dataHoraExecucao);
+    this.setEndereco(leilao.endereco);
 };
-
-method.retrieveLeilao = function()
-{
-	var leilao = {};
-	leilao.id = this.getId();
-	leilao.dono = this.getDono();
-	leilao.categoria = this.getCategoria();
-	leilao.descricao = this.getDescricao();
-	leilao.dataHoraInicio = formatter(this.getDataHoraInicio());
-	leilao.dataHoraFinal = formatter(this.getDataHoraFinal());
-	leilao.dataHoraExecucao = formatter(this.getDataHoraExecucao());
-	leilao.endereco = this.getEndereco();
-	
-	return leilao;
-}
 
 //==================================EXPORT======================
 

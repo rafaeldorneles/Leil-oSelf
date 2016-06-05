@@ -1,7 +1,6 @@
 var method = LeilaoRN.prototype;
 var errorHandler = require("./../../util/errorHandler");
 var ErrorGenerator = require("./../../util/ErrorGenerator");
-var dateConverter = require("./../../util/dateConverter");
 var isValidDate = require("./../../util/isValidDate");
 var SessionValidator = require("./../../util/SessionManager");
 
@@ -15,8 +14,8 @@ function LeilaoRN()
 
 method.cadastrar = function (leilao, dao, session, callback)
 {
-    if(!isLogged(session, this.sessionManager, this.errorGenerator, callback))
-        return;
+    //if(!isLogged(session, this.sessionManager, this.errorGenerator, callback))
+        //return;
     
     if (isNull(leilao, callback, this.errorGenerator))
         return;
@@ -26,6 +25,8 @@ method.cadastrar = function (leilao, dao, session, callback)
 
     if (!isDate(leilao, callback, this.errorGenerator))
         return;
+    
+    leilao.setDono(session.user);
 
     if ((leilao.getDataHoraFinal() - leilao.getDataHoraInicio()) < 0)
     {
@@ -70,7 +71,7 @@ method.listar = function (dao, callback)
 method.buscar = function (dao, leilao, callback)
 {
 
-    dao.buscar(leilao, function (err, leilao)
+    dao.buscar(leilao.id, function (err, leilao)
     {
         if (callback)
             callback(err, leilao);
@@ -82,7 +83,7 @@ method.buscar = function (dao, leilao, callback)
 
 method.buscarPorDono = function (dao, leilao, callback)
 {
-    dao.buscarPorDono(leilao, function (err, lista)
+    dao.buscarPorDono(leilao.dono, function (err, lista)
     {
         if (callback)
             callback(err, lista);
@@ -260,35 +261,5 @@ function isLogged(session, sessionManager, errorGenerator, callback)
     
     return true;
 }
-
-/*function hasLance(leilao, callback, errorGenerator){
- var LanceRN = require("./LanceRN.js");
- var LanceDAO = require("../dao/LanceDAO.js");
- var rn = new LanceRN();
- var dao = new LanceDAO();
- var arr = [];
- rn.metodoDefinir(leilao,dao, function(err, leilao)
- {
- if(err)
- {
- errorHandler(err);
- }
- else
- {
- arr = leilao;
- }
- }
- );
- if(arr != null)
- {
- errorGenerator.getLeilaoRun("arr", callback);
- return false;
- }
- 
- return true;
- 
- 
- 
- }*/
 
 module.exports = LeilaoRN;

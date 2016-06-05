@@ -1,43 +1,83 @@
 var method = Conexao.prototype;
+var MongoClient = require('mongodb').MongoClient;
+var ObjectId = require('mongodb').ObjectID;
+var JsonReader = require("./../../util/JsonFileReader");
+//var url = "mongodb://leilaoUser:S3gur4nc4@localhost:27017/LeilaoServicos";
 
-var mysql = require("mysql");
-var JsonFileReader = require("../../util/JsonFileReader.js");
+this.jsonReader;
+this.mongo;
+this.url;
 
-//Carrega Json de Properties
-var reader = new JsonFileReader();
-var config = reader.readFile("./config.json");
-
-//Popula variáveis com dados do banco
-var host = config.Database.host;
-var user = config.Database.user;
-var password = config.Database.password;
-var database = config.Database.database;
-
-//Variáveis da classe
-this.conn;
-this.resultSet;
-
-//Método varrutor da classe
-function Conexao() 
+function Conexao()
 {
-    //Cria conexao com as varantes
-    this.conn = mysql.createConnection
-    ({
-        host: host,
-        user: user,
-        password: password,
-        database: database
+    this.jsonReader = new JsonReader();
+    this.url = loadUrl(this.jsonReader.readFile("./config.json"));
+    this.mongo = MongoClient;
+}
+
+method.conectar = function (callback)
+{
+    this.mongo.connect(this.url, function(err, db)
+    {
+       if(callback)
+       {
+           if(err)
+           {
+               callback(err);
+               return;
+           }
+           callback(err, db);
+       }
+       else
+       {
+           if(err)
+               throw err;
+       }
     });
 }
 
-//Conecta no banco de dados
-method.conectar = function(callback) 
-{
-    this.conn.connect(function(err) 
+
+method.cadastrar = function(entity, db, callback)
+{       
+    db.collection(entity.constructor.name).insertOne(entity, function(err, result)
     {
-        
         if(callback)
-            callback(err);
+        {
+            callback(err, result.insertedId);
+        }
+        else
+        {   
+            if(err)
+                throw err;
+        }
+    });
+};
+
+
+method.buscar = function (collection, db, callback, args, sort)
+{   
+    if(!sort)
+        var cursor = db.collection(collection).find(args);
+    else
+        var cursor = db.collection(collection).find(args).sort(sort);
+    
+    cursor.rewind();
+    cursor.toArray(callback);
+};
+
+method.buscarPorId = function (collection, db, callback, args)
+{      
+    var cursor = db.collection(collection).find({_id: new ObjectId(args)});
+    cursor.rewind();
+    cursor.toArray(callback);
+};
+
+method.editar = function(entity, db, callback, id)
+{
+    db.collection(entity.constructor.name).replaceOne({_id: new ObjectId(id)}, entity, function (err, result)
+    {
+        if(callback)
+            callback(err, result);
         else
         {
             if(err)
@@ -46,67 +86,36 @@ method.conectar = function(callback)
     });
 };
 
-//Desconecta do banco de dados
-method.desconectar = function(callback) 
+method.deletar = function (collection, db, callback, id)
 {
-    this.conn.end(function(err) 
+    db.collection(collection).deleteOne({_id: new ObjectId(id)}, function(err, results)
     {
         if(callback)
-            callback(err);
-        else
-        {
-            if(err)
-                throw err;
-        }
-            
-    });
-
-};
-
-//Realiza querys que retornam um resultado
-method.queryResultSet = function(query, callback)
-{
-    this.conn.query(query, function(err, rows)
-    {
-        
-        if(callback)
-            callback(err, rows);
-        else
-        {
-            if(err)
-                throw err;    
-        }
-    });
-}
-
-method.queryResultSetWithArguments = function(query, args ,callback)
-{
-    this.conn.query(query, args, function(err, rows)
-    {
-        
-        if(callback)
-            callback(err, rows);
-        else
-        {
-            if(err)
-                throw err;    
-        }
-    });
-};
-
-//Executa querys que não retornam resultado
-method.executeQuery = function(query, args, callback)
-{
-    this.conn.query(query, args, function(err, dbResponse)
-    {
-        if(callback)
-            callback(err, dbResponse);
+            callback(err, results);
         else
         {
             if(err)
                 throw err;
         }
     });
+};
+
+function loadUrl(config)
+{
+    var url;
+    url = "mongodb://";
+    
+    if(config.database.user)
+        url += config.database.user + ":";
+    
+    if(config.database.password)
+        url += config.database.password + "@";
+    
+    url += config.database.host + ":";
+    url += config.database.port + "/";
+    url += config.database.name;
+    
+    return url;
 }
 
 module.exports = Conexao;

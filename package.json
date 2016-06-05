@@ -38,7 +38,7 @@
     "dependencies":
     {
         "express": "4.13.*",
-        "mysql": "2.10.*",
+        "mongodb": "2.1.*",
         "body-parser":  "1.15.*",
         "express-session": "1.13.*"
     },

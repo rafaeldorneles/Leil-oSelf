@@ -1,10 +1,11 @@
 {
-    "Database":
+    "database":
     {
-        "database": "",
+        "name": "",
         "host": "",
         "user": "",
-        "password": ""
+        "password": "",
+        "port": ""
     },
     "environment": "development",
     "port" : 3000

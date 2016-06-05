@@ -1,15 +1,14 @@
-var method = LeilaoDAO.prototype;
-var Conexao = require("./Conexao.js");
-var Leilao = require("./../bean/Leilao.js");
+var method = EnderecoDAO.prototype;
+var Endereco = require('./../bean/Endereco');
+var Conexao = require('./Conexao');
 
 this.conn;
-
-function LeilaoDAO()
+function EnderecoDAO()
 {
     this.conn = new Conexao();
 }
 
-method.cadastrar = function (leilao, callback)
+method.cadastrar = function (endereco, callback)
 {
     var conn = this.conn;
     conn.conectar(function (err, db)
@@ -20,10 +19,9 @@ method.cadastrar = function (leilao, callback)
             return;
         }
 
-        conn.cadastrar(leilao, db, function (err, insertedId)
+        conn.cadastrar(endereco, db, function (err, insertedId)
         {
-            leilao.id = insertedId + "";
-            conn.editar(leilao, db, function (err, result)
+            conn.editar(endereco, db, function (err, result)
             {
                 if (callback)
                 callback(err, insertedId);
@@ -35,7 +33,6 @@ method.cadastrar = function (leilao, callback)
 
             db.close();
             }, insertedId);
-            
         });
     });
 };
@@ -51,17 +48,17 @@ method.listar = function (callback)
             return;
         }
 
-        conn.buscar("Leilao", db, function (err, leiloes)
+        conn.buscar("Endereco", db, function (err, enderecos)
         {
-            for (var i = 0; i < leiloes.length; i++)
+            for (var i = 0; i < enderecos.length; i++)
             {
-                var l = new Leilao();
-                l.popularLeilao(leiloes[i]);
-                leiloes[i] = l;
+                var e = new Endereco();
+                e.popularEndereco(enderecos[i]);
+                enderecos[i] = e;
             }
             
             if(callback)
-                callback(err, leiloes);
+                callback(err, enderecos);
             else
             {
                 if(err)
@@ -84,13 +81,13 @@ method.buscar = function (id, callback)
             return;
         }
 
-        conn.buscarPorId("Leilao", db, function (err, leiloes)
+        conn.buscarPorId("Endereco", db, function (err, enderecos)
         {
-            var leilao = new Leilao();
-            leilao.popularLeilao(leiloes[0]);
+            var endereco = new Endereco();
+            endereco.popularEndereco(enderecos[0]);
 
             if(callback)
-                callback(err, leilao);
+                callback(err, endereco);
             else
             {
                 if(err)
@@ -103,40 +100,7 @@ method.buscar = function (id, callback)
     });
 };
 
-method.buscarPorDono = function (idDono, callback)
-{
-    var conn = this.conn;
-    conn.conectar(function (err, db)
-    {
-        if (err)
-        {
-            errorHandler(err, callback);
-            return;
-        }
-
-        conn.buscar("Leilao", db, function (err, leiloes)
-        {
-            for (var i = 0; i < leiloes.length; i++)
-            {
-                var l = new Leilao();
-                l.popularLeilao(leiloes[i]);
-                leiloes[i] = l;
-            }
-            
-            if(callback)
-                callback(err, leiloes);
-            else
-            {
-                if(err)
-                    throw err;
-            }
-            
-            db.close();
-        }, {dono: idDono});
-    });
-};
-
-method.editar = function (leilao, callback)
+method.editar = function (endereco, callback)
 {
     var conn = this.conn;
     conn.conectar(function (err, db)
@@ -147,10 +111,10 @@ method.editar = function (leilao, callback)
             return;
         }
         
-        conn.editar(leilao, db, function (err, result)
+        conn.editar(endereco, db, function (err, result)
         {
             if(callback)
-                callback(err, result);
+                callback(err, result)
             else
             {
                 if(err)
@@ -158,11 +122,11 @@ method.editar = function (leilao, callback)
             }
             
             db.close();
-        }, leilao.id);
+        }, endereco.id);
     });
 };
 
-method.deletar = function (leilao, callback)
+method.deletar = function (endereco, callback)
 {
     var conn = this.conn;
     conn.conectar(function (err, db)
@@ -173,7 +137,7 @@ method.deletar = function (leilao, callback)
             return;
         }
         
-        conn.deletar("Leilao", db, function (err, results)
+        conn.deletar("Endereco", db, function (err, results)
         {
             if(callback)
                 callback(err, results);
@@ -183,7 +147,7 @@ method.deletar = function (leilao, callback)
                     throw err;
             }
             
-        }, leilao.id);
+        }, endereco.id);
     });
 };
 
@@ -195,4 +159,4 @@ function errorHandler(err, callback)
         throw err;
 }
 
-module.exports = LeilaoDAO;
+module.exports = EnderecoDAO;
