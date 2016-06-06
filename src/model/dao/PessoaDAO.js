@@ -1,6 +1,6 @@
 var method = PessoaDAO.prototype;
-var Pessoa = require("./../bean/Pessoa");
-var Conexao = require('./Conexao');
+var Pessoa = require("./../bean/Pessoa.js");
+var Conexao = require('./Conexao.js');
 
 this.conn;
 function PessoaDAO()
@@ -21,6 +21,7 @@ method.cadastrar = function (pessoa, callback)
 
         conn.cadastrar(pessoa, db, function (err, insertedId)
         {
+            pessoa.id = insertedId + "";
             conn.editar(pessoa, db, function (err, result)
             {
                 if (callback)

@@ -1,11 +1,11 @@
 {
     "database":
     {
-        "name": "",
-        "host": "",
+        "name": "LeilaoServicos",
+        "host": "localhost",
         "user": "",
         "password": "",
-        "port": ""
+        "port": "27017"
     },
     "environment": "development",
     "port" : 3000

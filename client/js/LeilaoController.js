@@ -5,6 +5,7 @@ app.controller('LeilaoController', function($scope, $http)
 {
     $scope.cadastrar = function(leilao)
     {
+        
     	function sucessHandler(response)
 		{
 			console.log(response);

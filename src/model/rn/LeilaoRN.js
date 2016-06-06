@@ -12,10 +12,10 @@ function LeilaoRN()
     this.sessionManager = new SessionValidator();
 }
 
-method.cadastrar = function (leilao, dao, session, callback)
+method.cadastrar = function (leilao, dao, /*session,*/ callback)
 {
-    if(!isLogged(session, this.sessionManager, this.errorGenerator, callback))
-        return;
+    //if(!isLogged(session, this.sessionManager, this.errorGenerator, callback))
+    //    return;
     
     if (isNull(leilao, callback, this.errorGenerator))
         return;
@@ -26,7 +26,7 @@ method.cadastrar = function (leilao, dao, session, callback)
     if (!isDate(leilao, callback, this.errorGenerator))
         return;
     
-    leilao.setDono(session.user);
+  //  leilao.setDono(session.user);
 
     if ((leilao.getDataHoraFinal() - leilao.getDataHoraInicio()) < 0)
     {
@@ -251,15 +251,15 @@ function isDate(leilao, callback, errorGenerator)
     return true;
 }
 
-function isLogged(session, sessionManager, errorGenerator, callback)
-{
-    if(!sessionManager.isLogged(session))
-    {
-        errorGenerator.getNotAuthorizedError(callback);
-        return false;
-    }
-    
-    return true;
-}
+//function isLogged(session, sessionManager, errorGenerator, callback)
+//{
+//    if(!sessionManager.isLogged(session))
+//    {
+//        errorGenerator.getNotAuthorizedError(callback);
+//        return false;
+//    }
+//    
+//    return true;
+//}
 
 module.exports = LeilaoRN;

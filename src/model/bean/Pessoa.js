@@ -3,12 +3,12 @@ var method = Pessoa.prototype;
 //Lista de Atributos
 this.id;
 this.nome;
-this.sobrenome;
+//this.sobrenome;
 this.dataNascimento;
 this.cpf;
 this.cnpj;
-this.ranking;
-this.status;
+//this.ranking;
+//this.status;
 this.username;
 this.senha;
 this.email;
@@ -32,10 +32,10 @@ method.setNome = function(nome)
 	this.nome = nome;
 }
 
-method.setSobrenomme = function(sobrenome)
-{
-	this.sobrenome = sobrenome;	
-}
+//method.setSobrenomme = function(sobrenome)
+//{
+//	this.sobrenome = sobrenome;	
+//}
 
 method.setDataNascimento = function(dataNascimento)
 {
@@ -52,15 +52,15 @@ method.setCnpj = function (cnpj)
 	this.cnpj = cnpj;
 }
 
-method.setRanking = function(ranking)
-{
-	this.ranking = ranking;
-}
+//method.setRanking = function(ranking)
+//{
+//	this.ranking = ranking;
+//}
 
-method.setStatus = function(status)
-{
-	this.status = status;
-}
+//method.setStatus = function(status)
+//{
+//	this.status = status;
+//}
 
 method.setUsername = function(username)
 {
@@ -89,10 +89,10 @@ method.getNome = function()
 	return this.nome;
 }
 
-method.getSobrenome = function()
-{
-	return this.sobrenome;
-}
+//method.getSobrenome = function()
+//{
+//	return this.sobrenome;
+//}
 
 method.getDataNascimento = function()
 {
@@ -109,15 +109,15 @@ method.getCnpj = function()
 	return this.cnpj;
 }
 
-method.getRanking = function()
-{
-	return this.ranking;
-}
-
-method.getStatus = function()
-{
-	return this.status;
-}
+//method.getRanking = function()
+//{
+//	return this.ranking;
+//}
+//
+//method.getStatus = function()
+//{
+//	return this.status;
+//}
 
 method.getUsername = function()
 {
@@ -139,6 +139,23 @@ method.getTelefones = function()
 	return this.telefones;
 }
 
+//================================OUTROS========================
+
+method.popularPessoa= function (pessoa)
+{
+    this.setId(pessoa._id);
+    this.setNome(pessoa.nome);
+   // this.setSobrenome(pessoa.sobrenome);
+    this.setDataNascimento(pessoa.dataNascimento);
+    this.setCpf(pessoa.cpf);
+    this.setCnpj(pessoa.cnpj);
+  //  this.setRanking(pessoa.ranking);
+  //  this.setStatus(pessoa.status);
+    this.setUsername(pessoa.username);
+    this.setSenha(pessoa.senha);
+    this.setEmail(pessoa.email);
+    this.setTelefones(pessoa.telefones)
+};
 ///==================================EXPORT======================
 
 module.exports = Pessoa;

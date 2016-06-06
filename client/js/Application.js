@@ -4,7 +4,15 @@ angular.module('AppModule', ['ngRoute']).config(['$routeProvider', function ($ro
 	$routeProvider.when('/perfil', 
 	{
 		templateUrl: 'views/perfil.html',
-		controller: 'LeilaoController'
+		controller: 'PessoaController'
+	})
+        .when('/perfil-novo', {
+		templateUrl: 'views/perfil-novo.html',
+		controller: 'PessoaController'
+	})
+        .when('/perfil-juridica-novo', {
+		templateUrl: 'views/perfil-juridica-novo.html',
+		controller: 'PessoaController'
 	})
 	.when('/leiloes-leiloes', {
 		templateUrl: 'views/leiloes-leiloes.html',

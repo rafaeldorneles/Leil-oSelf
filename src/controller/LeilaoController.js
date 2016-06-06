@@ -14,13 +14,13 @@ module.exports = function (router)
         var dao = new LeilaoDAO();
         var leilao = new Leilao();
         var data = request.body;
-        var session = request.session;
+        //var session = request.session;
 
         //Popula Bean do leilão para validação e persistência
         leilao.popularLeilao(data);
 
         //Monta o escopo onde os dados estarão disponíveis, através de callback e executa o cadastro
-        rn.cadastrar(leilao, dao, session, function (err, dbResponse)
+        rn.cadastrar(leilao, dao, /*session,*/ function (err, dbResponse)
         {
             
             if (err)
