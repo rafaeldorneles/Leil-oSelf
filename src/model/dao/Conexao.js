@@ -34,7 +34,7 @@ method.conectar = function (callback)
                throw err;
        }
     });
-}
+};
 
 
 method.cadastrar = function(entity, db, callback)

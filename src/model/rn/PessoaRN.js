@@ -50,7 +50,17 @@ this.errorGenerator;
 
 };
 
-
+method.login = function (dao, pessoa, callback)
+{
+    dao.login(pessoa.username,pessoa.senha, function (err, lista)
+    {
+        if (callback)
+            callback(err, lista);
+        else
+        if (err)
+            throw err;
+    });
+};
 
 method.buscar = function (dao, pessoa, callback)
 {

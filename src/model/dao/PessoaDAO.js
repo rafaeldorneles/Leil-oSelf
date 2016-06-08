@@ -100,7 +100,36 @@ method.buscar = function (id, callback)
         
     });
 };
-
+ method.login = function (usuario,senha,callback)
+ {
+     var conn = this.conn;
+     conn.conectar(function(err, db)
+     {
+         if(err)
+         {
+             errorHandler(err, callback);
+             return;
+         }
+         conn.buscar("Pessoa",db,function(err,pessoas)
+         {
+             for(var i=0; i<pessoas.length; i++)
+             {
+                 var p = new Pessoa();
+                 p.popularPessoa(pessoas[i]);
+                 pessoas[i] = p;
+             }
+             if(callback)
+                 callback(err, pessoas);
+             else
+             {
+                 if(err)
+                    throw err;
+                
+             }
+             db.close();
+         }, {username:usuario,senha:senha});
+     });
+ };
 method.editar = function (pessoa, callback)
 {
     var conn = this.conn;

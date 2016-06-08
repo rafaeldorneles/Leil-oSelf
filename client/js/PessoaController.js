@@ -151,14 +151,50 @@ app.controller('PessoaController', function($scope, $http)
             method: "GET",
             timeout: 10000,
             responseType: "json",
-            url: "/pessoas/id/1",
+            url: "/pessoas/1",
             cache: false
         };
 
         $http(config).then(sucessHandler, errorHandler);
     };
 	
-    
+    $scope.login = function()
+    {
+        function sucessHandler(response)
+        {
+            $scope.lista = response.data.lista;
+
+            $scope.lista.delete = function(pessoa)
+            {
+                for(var i = 0; i < this.length; i++)
+                {
+                    if(this[i].id == pessoa.id)
+                        delete this[i];
+                }
+            };
+
+            $scope.lista.replace = function(pessoa)
+            {
+                for(var i = 0; i < this.length; i++)
+                {
+                    if(this[i].id == pessoa.id)
+                        this[i] = pessoa;
+                }
+            };
+
+        }
+
+        var config = 
+        {
+            method: "GET",
+            timeout: 10000,
+            responseType: "json",
+            url: "/pessoas/1?1",//mudar
+            cache: false
+        };
+
+        $http(config).then(sucessHandler, errorHandler);
+    };
     function errorHandler(response)
     {
         console.log(response.data.error);

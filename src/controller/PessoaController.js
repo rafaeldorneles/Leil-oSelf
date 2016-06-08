@@ -55,6 +55,30 @@ module.exports = function (router)
 
     });
     
+    
+     //Método de busca por id
+    router.get('/pessoas/username/:usuario?/:senha', function (request, response)
+    {
+        //Declaração de objetos e recepção de dados do request
+        var rn = new PessoaRN();
+        var dao = new PessoaDAO();
+        var pessoa = new Pessoa();
+        var usuario = request.params.usuario;
+        var senha = request.params.senha;
+
+        pessoa.setUsername(usuario);
+        pessoa.setSenha(senha);
+        rn.login(dao, pessoa, function (err, pessoa)
+        {
+            if (err)
+            {
+                errorHandler(err, response);
+            } else
+            {
+                response.status(200).send({pessoa: pessoa});
+            }
+        });
+    });
      //Método de busca por id
     router.get('/pessoas/:id', function (request, response)
     {
