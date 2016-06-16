@@ -14,5 +14,11 @@ method.isLogged = function (session)
     return true;
 };
 
+method.logar = function (session, usuario)
+{
+    session.user = usuario;
+    return true;
+};
+
 
 module.exports = SessionManager;

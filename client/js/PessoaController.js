@@ -151,7 +151,7 @@ app.controller('PessoaController', function($scope, $http)
             method: "GET",
             timeout: 10000,
             responseType: "json",
-            url: "/pessoas/1",
+            url: "/pessoas/575880121a0897082131929b",
             cache: false
         };
 
@@ -189,7 +189,7 @@ app.controller('PessoaController', function($scope, $http)
             method: "GET",
             timeout: 10000,
             responseType: "json",
-            url: "/pessoas/1?1",//mudar
+            url: "/pessoas/edu/1234",//mudar
             cache: false
         };
 

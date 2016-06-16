@@ -56,18 +56,18 @@ module.exports = function (router)
     });
     
     
-     //Método de busca por id
-    router.get('/pessoas/username/:usuario?/:senha', function (request, response)
+     //Métodologin
+    router.post('/pessoas/login', function (request, response)
     {
         //Declaração de objetos e recepção de dados do request
         var rn = new PessoaRN();
         var dao = new PessoaDAO();
         var pessoa = new Pessoa();
-        var usuario = request.params.usuario;
-        var senha = request.params.senha;
+        var data = request.body;
 
-        pessoa.setUsername(usuario);
-        pessoa.setSenha(senha);
+       pessoa.popularPessoa(data);
+       
+       console.log(pessoa);
         rn.login(dao, pessoa, function (err, pessoa)
         {
             if (err)
@@ -82,13 +82,16 @@ module.exports = function (router)
      //Método de busca por id
     router.get('/pessoas/:id', function (request, response)
     {
+        console.log("entrei");
         //Declaração de objetos e recepção de dados do request
         var rn = new PessoaRN();
         var dao = new PessoaDAO();
         var pessoa = new Pessoa();
         var id = request.params.id;
-
+        
+        
         pessoa.setId(id);
+        
 
         rn.buscar(dao, pessoa, function (err, pessoa)
         {

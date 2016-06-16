@@ -2,10 +2,10 @@ var method = PessoaRN.prototype;
 var errorHandler = require("./../../util/errorHandler");
 var ErrorGenerator = require("./../../util/ErrorGenerator");
 var isValidDate = require("./../../util/isValidDate");
-//var SessionValidator = require("./../../util/SessionManager");
+var SessionValidator = require("./../../util/SessionManager");
 
 this.errorGenerator;
-//this.sessionManager;
+this.sessionManager;
  
  function PessoaRN(){
      this.errorGenerator = new ErrorGenerator();
