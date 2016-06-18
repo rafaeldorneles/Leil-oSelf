@@ -10,6 +10,7 @@ function LanceDAO()
 
 method.cadastrar = function (lance, callback)
 {
+    console.log("entrei na dao");
     var conn = this.conn;
     conn.conectar(function (err, db)
     {

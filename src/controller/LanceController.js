@@ -1,20 +1,64 @@
-var errorHandler = require("./../util/errorHandler.js");
-var Lance = require("./../model/bean/Lance.js");
-var LanceRN = require("./../model/rn/LanceRN.js");
+var Leilao = require("./../model/bean/Leilao");
+var LeilaoDAO = require("./../model/dao/LeilaoDAO");
+var Lance = require("./../model/bean/Lance");
+var LanceRN = require("./../model/rn/LanceRN");
+var LanceDAO = require("./../model/dao/LanceDAO");
+var errorHandler = require("./../util/errorHandler");
+var ErrorGenerator = require("./../util/ErrorGenerator");
 
-module.exports = function(router)
+module.exports = function (router)
 {
-	router.post("/lances", function(request, response)
-	{
-		var data = request.body;
-		var lance = new Lance();
-		var rn = new LanceRN();
-		
-		lance.popularLance(data);
-		
-		
-		
-		
-	
-	});
+    //Método de Cadastro
+    router.post('/lances', function (request, response)
+    {
+        //Declaração de objetos e recepção de dados do request
+        var rn = new LanceRN();
+        var dao = new LanceDAO();
+        var lance = new Lance();
+        var data = request.body;
+        //var session = request.session;
+
+        //Popula Bean do leilão para validação e persistência
+        lance.popularLance(data);console.log("Qualquer merda");
+
+        //Monta o escopo onde os dados estarão disponíveis, através de callback e executa o cadastro
+        rn.cadastrar(lance, dao,  function (err, dbResponse)
+        {
+            
+            if (err)
+            {
+                errorHandler(err, response);
+                console.log("erro");
+                
+            } else
+            {
+                response.location("http://" + request.hostname + "/lances/" + dbResponse);
+                response.status(201).send({message: "Lance dado com sucesso!"});
+                console.log("sucesso");
+            }
+        });
+
+    });
+
+    //Método de Listagem
+    router.get('/lances', function (request, response)
+    {
+        //Declaração de objetos
+        var rn = new LanceRN();
+        var dao = new LanceDAO();
+
+        //Execução do método que lista
+        rn.listar(dao, function (err, lista)
+        {
+            if (err)
+            {
+                errorHandler(err, response);
+            } else
+            {
+                response.status(200).send({lista: lista});
+            }
+        });
+
+    });
+    
 };

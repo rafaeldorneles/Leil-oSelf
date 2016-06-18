@@ -18,8 +18,8 @@ angular.module('AppModule', ['ngRoute']).config(['$routeProvider', function ($ro
 		templateUrl: 'views/leiloes-leiloes.html',
 		controller: 'LeilaoController'
 	})
-	.when('/perfil-juridica', {
-		templateUrl: 'views/perfil-juridica.html',
+	.when('/perfil-juridica-novo', {
+		templateUrl: 'views/perfil-juridica-novo.html',
 		controller: 'LeilaoController'
 	})
 	.when('/perfil-cadastroServico', {
@@ -45,6 +45,10 @@ angular.module('AppModule', ['ngRoute']).config(['$routeProvider', function ($ro
 	.when('/leiloes-abertos', {
 		templateUrl: 'views/leiloes-abertos.html',
 		controller: 'LeilaoController'
+	})
+         .when('/avaliacao', {
+		templateUrl: 'views/avaliacao-do-usuario.html',
+		controller: 'AvaliacaoController'
 	})
 	.when('/404', {
 		templateUrl: 'views/404.html'

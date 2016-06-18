@@ -10,15 +10,12 @@ function LanceRN()
 
 method.cadastrar = function(lance, dao, callback)
 {
-	if(!isNull(lance, callback, this.errorGenerator))
-		return;
-		
-	if(!isNumber(lance, callback, this.errorGenerator))
-		return;
-		
-	if(!isLeilao(lance, callback, this.errorGenerator))
-		return;
-		
+	
+	
+    dao.cadastrar(lance, function(err, insertedId)
+    {
+        callback(err, insertedId)
+    });
 	
 		
 };
