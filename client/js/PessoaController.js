@@ -66,6 +66,31 @@ app.controller('PessoaController', function($scope, $http)
 
     };
 
+/*
+    $scope.cadastrarAvaliacao = function (avaliacao)
+    {
+        console.log(avaliacao);
+
+        function sucessHandler(response)
+        {
+            console.log(response);
+            //alert(response.data.message);
+        }
+        
+        var config =
+                {
+                    method: "POST",
+                    timeout: 10000,
+                    responseType: "json",
+                    url: "/avaliacao",
+                    cache: true,
+                    data: avaliacao
+                };
+
+        $http(config).then(sucessHandler, errorHandler);
+    };
+*/    
+    
     $scope.deletar = function(pessoa, lista)
     {
 
@@ -122,6 +147,7 @@ app.controller('PessoaController', function($scope, $http)
 
     $scope.buscar = function()
     {
+        /*
         function sucessHandler(response)
         {
             $scope.lista = response.data.lista;
@@ -143,7 +169,6 @@ app.controller('PessoaController', function($scope, $http)
                         this[i] = pessoa;
                 }
             };
-
         }
 
         var config = 
@@ -151,11 +176,12 @@ app.controller('PessoaController', function($scope, $http)
             method: "GET",
             timeout: 10000,
             responseType: "json",
-            url: "/pessoas/575880121a0897082131929b",
+            url: "/Pessoa",
             cache: false
         };
 
         $http(config).then(sucessHandler, errorHandler);
+        */
     };
 	
     $scope.login = function()
@@ -189,7 +215,7 @@ app.controller('PessoaController', function($scope, $http)
             method: "GET",
             timeout: 10000,
             responseType: "json",
-            url: "/pessoas/edu/1234",//mudar
+            url: "/pessoas/1?1",//mudar
             cache: false
         };
 
@@ -197,8 +223,8 @@ app.controller('PessoaController', function($scope, $http)
     };
     function errorHandler(response)
     {
-        console.log(response.data.error);
-        alert(response.data.errorMessage);
+        console.log(response);
+       // alert(response.data.errorMessage);
     }
 
 });
