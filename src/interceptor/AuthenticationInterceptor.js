@@ -46,6 +46,10 @@ module.exports = function (request, response, next)
 			next();
 		}
 	}
+	else
+	{
+		next();
+	}
 
 
 
