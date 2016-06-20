@@ -4,6 +4,7 @@ var errorHandler = require("./../util/errorHandler");
 
 function needAuthorization(path, method)
 {
+
 	var returns = false;
 	var paths =
 	{
@@ -21,6 +22,11 @@ function needAuthorization(path, method)
 				returns = true;
 		});
 	}
+	
+
+	if(process.env.NODE_ENV == "development" && process.env.SESSION == "false")
+		returns = false;
+
 
 	return returns;
 }

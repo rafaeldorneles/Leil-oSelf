@@ -79,6 +79,7 @@ console.log("INFO: Setup of environment variables.");
 
 process.env.NODE_ENV = config.environment;
 process.env.PORT = config.port;
+process.env.SESSION = config.session;
 
 console.log("INFO: Setup ok.");
 
