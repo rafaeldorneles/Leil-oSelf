@@ -36,7 +36,7 @@ angular.module('AppModule', ['ngRoute']).config(['$routeProvider', function ($ro
 	})
 	.when('/', {
 		templateUrl: 'views/home.html',
-		controller: ''
+		controller: 'AppController'
 	})
 	.when('/sobre', {
 		templateUrl: 'views/sobre.html',
@@ -59,5 +59,25 @@ angular.module('AppModule', ['ngRoute']).config(['$routeProvider', function ($ro
 		redirectTo: '/404'
 	});
 }]);
+
+var app = angular.module("AppModule");
+
+app.controller("AppController", function ($scope, $http)
+{
+	console.log("entrei no controller");
+	var config =
+	{
+		method: "GET",
+		url: "/loginForcado"
+	};
+
+	$http(config).then(function(response)
+	{
+		console.log("deu certo");
+	}, function(response)
+	{
+		console.log("nao deu");
+	});
+});
 
         

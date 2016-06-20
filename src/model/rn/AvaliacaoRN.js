@@ -12,10 +12,8 @@ function AvaliacaoRN()
     this.sessionManager = new SessionValidator();
 }
 
-method.cadastrar = function (avaliacao, dao, /*session,*/ callback)
+method.cadastrar = function (avaliacao, dao,  callback)
 {
-    //if(!isLogged(session, this.sessionManager, this.errorGenerator, callback))
-    //    return;
     
     if (isNull(avaliacao, callback, this.errorGenerator))
         return;
@@ -64,11 +62,9 @@ method.buscar = function (dao, avaliacao, callback)
 };
 
 
-method.deletar = function (avaliacao, dao, session, callback)
+method.deletar = function (avaliacao, dao, callback)
 {
 
-    if(!isLogged(session, this.sessionManager, this.errorGenerator, callback))
-        return;
     /**
      * Criar condição para verifivar se quem esta deletando realmente é o dono
      * */
@@ -84,11 +80,8 @@ method.deletar = function (avaliacao, dao, session, callback)
     });
 };
 
-method.editar = function (avaliacao, dao, session, callback)
+method.editar = function (avaliacao, dao,  callback)
 {
-    if(!isLogged(session, this.sessionManager, this.errorGenerator, callback))
-        return;
-    
     if (isNull(avaliacao, callback, this.errorGenerator))
         return;
 

@@ -3,6 +3,7 @@ var LeilaoRN = require("./../model/rn/LeilaoRN");
 var LeilaoDAO = require("./../model/dao/LeilaoDAO");
 var errorHandler = require("./../util/errorHandler");
 var ErrorGenerator = require("./../util/ErrorGenerator");
+var SessionManager = require("./../util/SessionManager");
 
 module.exports = function (router)
 {
@@ -13,14 +14,15 @@ module.exports = function (router)
         var rn = new LeilaoRN();
         var dao = new LeilaoDAO();
         var leilao = new Leilao();
+        var sessionManager = new SessionManager();
+        var usuario = sessionManager.getUser(request.session);
         var data = request.body;
-        //var session = request.session;
 
         //Popula Bean do leilão para validação e persistência
         leilao.popularLeilao(data);
 
         //Monta o escopo onde os dados estarão disponíveis, através de callback e executa o cadastro
-        rn.cadastrar(leilao, dao, /*session,*/ function (err, dbResponse)
+        rn.cadastrar(leilao, dao, usuario,function (err, dbResponse)
         {
             
             if (err)
@@ -67,7 +69,8 @@ module.exports = function (router)
 
         leilao.setId(id);
 
-        rn.buscar(dao, leilao, function (err, leilao)
+		//Execução do método que busca pelo id
+		rn.buscar(dao, leilao, function (err, leilao)
         {
             if (err)
             {
@@ -78,7 +81,6 @@ module.exports = function (router)
             }
         });
 
-        //Execução do método que busca pelo id
     });
 
     router.get('/leiloes/dono/:id', function (request, response)
@@ -92,7 +94,8 @@ module.exports = function (router)
 
         leilao.setDono(id);
 
-        rn.buscarPorDono(dao, leilao, function (err, lista)
+		//Execução do método que busca pelo id
+		rn.buscarPorDono(dao, leilao, function (err, lista)
         {
             if (err)
             {
@@ -103,7 +106,7 @@ module.exports = function (router)
             }
         });
 
-        //Execução do método que busca pelo id
+
     });
 
     //Método de Edição
@@ -116,7 +119,6 @@ module.exports = function (router)
         var data = request.body;
         var id = request.params.id;
         var errorGenerator = new ErrorGenerator();
-        var session = request.session;
 
         //Popula Bean do leilão para validação e persistência
         leilao.popularLeilao(data);
@@ -124,13 +126,12 @@ module.exports = function (router)
         if (leilao.getId() != id)
         {
             var error = errorGenerator.getResourceConflictError("id");
-            response.location("http://" + request.host + "/leiloes/" + leilao.getId());
             errorHandler(error, response, 403);
             return;
         }
 
         //Execução do método de edição
-        rn.editar(leilao, dao, session, function (err, dbResponse)
+        rn.editar(leilao, dao, function (err, dbResponse)
         {
             if (err)
             {
@@ -154,7 +155,6 @@ module.exports = function (router)
         var data = JSON.parse(request.query.leilao);
         var id = request.params.id;
         var errorGenerator = new ErrorGenerator();
-        var session = request.session;
 
         //Popula Bean do leilão para validação e persistência
         leilao.popularLeilao(data);
@@ -162,13 +162,12 @@ module.exports = function (router)
         if (leilao.getId() != id)
         {
             var error = errorGenerator.getResourceConflictError("id");
-            response.location("http://" + request.host + "/leiloes/" + leilao.getId());
             errorHandler(error, response, 403);
             return;
         }
 
         //Método que executa a exclusão dos dados
-        rn.deletar(leilao, dao, session, function (err)
+        rn.deletar(leilao, dao, function (err)
         {
             if (err)
                 errorHandler(err, response);
@@ -177,5 +176,4 @@ module.exports = function (router)
         });
 
     });
-
 };

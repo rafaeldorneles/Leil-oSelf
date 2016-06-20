@@ -40,7 +40,7 @@
         "express": "4.13.*",
         "mongodb": "2.1.*",
         "body-parser":  "1.15.*",
-        "express-session": "1.13.*"
+        "node-session": "1.2.*"
     },
     "devDependencies": {},
     "private": true

@@ -1,21 +1,16 @@
 var method = LeilaoRN.prototype;
-var errorHandler = require("./../../util/errorHandler");
 var ErrorGenerator = require("./../../util/ErrorGenerator");
 var isValidDate = require("./../../util/isValidDate");
-var SessionValidator = require("./../../util/SessionManager");
 
 this.errorGenerator;
-this.sessionManager;
+
 function LeilaoRN()
 {
     this.errorGenerator = new ErrorGenerator();
-    this.sessionManager = new SessionValidator();
 }
 
-method.cadastrar = function (leilao, dao, /*session,*/ callback)
+method.cadastrar = function (leilao, dao, usuario,callback)
 {
-    //if(!isLogged(session, this.sessionManager, this.errorGenerator, callback))
-    //    return;
     
     if (isNull(leilao, callback, this.errorGenerator))
         return;
@@ -26,7 +21,7 @@ method.cadastrar = function (leilao, dao, /*session,*/ callback)
     if (!isDate(leilao, callback, this.errorGenerator))
         return;
     
-  //  leilao.setDono(session.user);
+  	leilao.setDono();
 
     if ((leilao.getDataHoraFinal() - leilao.getDataHoraInicio()) < 0)
     {
@@ -56,7 +51,8 @@ method.cadastrar = function (leilao, dao, /*session,*/ callback)
 
 method.listar = function (dao, callback)
 {
-    dao.listar(function (err, lista) {
+    dao.listar(function (err, lista)
+	{
         if (callback)
             callback(err, lista);
         else
@@ -94,11 +90,9 @@ method.buscarPorDono = function (dao, leilao, callback)
 };
 
 
-method.deletar = function (leilao, dao, session, callback)
+method.deletar = function (leilao, dao, callback)
 {
 
-    if(!isLogged(session, this.sessionManager, this.errorGenerator, callback))
-        return;
     /**
      * Criar condição para verifivar se quem esta deletando realmente é o dono
      * */
@@ -114,10 +108,8 @@ method.deletar = function (leilao, dao, session, callback)
     });
 };
 
-method.editar = function (leilao, dao, session, callback)
+method.editar = function (leilao, dao, callback)
 {
-    if(!isLogged(session, this.sessionManager, this.errorGenerator, callback))
-        return;
     
     if (isNull(leilao, callback, this.errorGenerator))
         return;
@@ -250,16 +242,5 @@ function isDate(leilao, callback, errorGenerator)
 
     return true;
 }
-
-//function isLogged(session, sessionManager, errorGenerator, callback)
-//{
-//    if(!sessionManager.isLogged(session))
-//    {
-//        errorGenerator.getNotAuthorizedError(callback);
-//        return false;
-//    }
-//    
-//    return true;
-//}
 
 module.exports = LeilaoRN;

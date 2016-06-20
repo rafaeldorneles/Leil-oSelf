@@ -14,7 +14,6 @@ module.exports = function (router)
         var dao = new PessoaDAO();
         var pessoa = new Pessoa();
         var data = request.body;
-        //var session = request.session;
         //Popula Bean da Pessoa para validação e persistência
         pessoa.popularPessoa(data);
 
@@ -115,7 +114,6 @@ module.exports = function (router)
         var data = request.body;
         var id = request.params.id;
         var errorGenerator = new ErrorGenerator();
-        var session = request.session;
 
         //Popula Bean do leilão para validação e persistência
         pessoa.popularPessoa(data);
@@ -153,7 +151,6 @@ module.exports = function (router)
         var data = JSON.parse(request.query.pessoa);
         var id = request.params.id;
         var errorGenerator = new ErrorGenerator();
-        var session = request.session;
 
         //Popula Bean do pessoa para validação e persistência
         pessoa.popularPessoa(data);

@@ -9,14 +9,13 @@ var ErrorGenerator = require("./../util/ErrorGenerator");
 module.exports = function (router)
 {
     //Método de Cadastro
-    router.post('/avaliacao', function (request, response)
+    router.post('/avaliacoes', function (request, response)
     {
         //Declaração de objetos e recepção de dados do request
         var rn = new AvaliacaoRN();
         var dao = new AvaliacaoDAO();
         var avaliacao = new Avaliacao();
         var data = request.body;
-        //var session = request.session;
 
         //Popula Bean do leilão para validação e persistência
         avaliacao.popularAvaliacao(data);
@@ -33,7 +32,7 @@ module.exports = function (router)
                 
             } else
             {
-                response.location("http://" + request.hostname + "/avaliacao/" + dbResponse);
+                response.location("http://" + request.hostname + "/avaliacoes" + dbResponse);
                 response.status(201).send({message: "Avaliacao registrada com sucesso!"});
                 console.log("sucesso");
             }
@@ -41,7 +40,7 @@ module.exports = function (router)
     });
 
     //Método de Listagem
-    router.get('/avaliacao', function (request, response)
+    router.get('/avaliacoes', function (request, response)
     {
         //Declaração de objetos
         var rn = new AvaliacaoRN();

@@ -54,7 +54,7 @@ module.exports = function (err, response, status)
             else
                 response.status(500).send({errorMessage: "Id informado não confere com o objeto enviado", error: err});
             break;
-        case "comentei":
+        case "ERR_NOT_AUTHORIZED":
             if (status)
                 response.status(status).send({errorMessage: "Você não pode acessar esta área, por favor realize login.", error: err});
             else

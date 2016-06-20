@@ -8,7 +8,7 @@ function SessionManager()
 
 method.isLogged = function (session)
 {
-    if (!session.user)
+    if (!session.get("user"))
         return false;
 
     return true;
@@ -16,8 +16,12 @@ method.isLogged = function (session)
 
 method.logar = function (session, usuario)
 {
-    session.user = usuario;
-    return true;
+    session.put("user", usuario);
+};
+
+method.getUser = function (session)
+{
+	return session.get("user");
 };
 
 

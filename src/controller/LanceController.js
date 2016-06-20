@@ -16,13 +16,12 @@ module.exports = function (router)
         var dao = new LanceDAO();
         var lance = new Lance();
         var data = request.body;
-        //var session = request.session;
 
         //Popula Bean do leilão para validação e persistência
         lance.popularLance(data);console.log("Qualquer merda");
 
         //Monta o escopo onde os dados estarão disponíveis, através de callback e executa o cadastro
-        rn.cadastrar(lance, dao,  function (err, dbResponse)
+        rn.cadastrar(lance, dao, function (err, dbResponse)
         {
             
             if (err)
