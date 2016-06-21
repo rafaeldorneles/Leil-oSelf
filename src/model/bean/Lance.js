@@ -70,7 +70,7 @@ method.getDataHora = function ()
 
 method.popularLance = function(lance)
 {
-    this.setId(lance._id);
+    this.setId(lance.id);
     this.setInteressado(lance.interessado);
     this.setValor(lance.valor);
     this.setLeilao(lance.leilao);

@@ -9,5 +9,5 @@
     },
     "environment": "development",
     "port" : 3000,
-    "session": true
+    "session": false
 }

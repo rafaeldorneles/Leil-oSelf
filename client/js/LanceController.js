@@ -3,6 +3,19 @@ var app = angular.module('AppModule');
 
 app.controller('LanceController', function ($scope, $http)
 {
+
+    $scope.setInfo = function (lance)
+    {
+        $scope.informacoes = true;
+        $scope.lance = angular.copy(lance)
+    }
+
+    $scope.removeInfo = function ()
+    {
+        $scope.informacoes = false;
+    }
+
+
     $scope.cadastrarLance = function (lance, leilao)
     {
 
@@ -10,7 +23,7 @@ app.controller('LanceController', function ($scope, $http)
         {
             console.log(response);
             //alert(response.data.message);
-            
+
         }
         lance.leilao = leilao;
         console.log(lance);
@@ -25,10 +38,9 @@ app.controller('LanceController', function ($scope, $http)
                 };
 
         $http(config).then(sucessHandler, errorHandler);
-
     };
 
-    /*
+
     $scope.listar = function ()
     {
 
@@ -36,85 +48,66 @@ app.controller('LanceController', function ($scope, $http)
         {
             $scope.lista = response.data.lista;
 
-            $scope.lista.delete = function (leilao)
+            $scope.lista.delete = function (lance)
             {
                 for (var i = 0; i < this.length; i++)
                 {
-                    if (this[i].id == leilao.id)
+                    if (this[i].id == lance.id)
                         delete this[i];
                 }
             };
 
-            $scope.lista.replace = function (leilao)
+            $scope.lista.replace = function (lance)
             {
                 for (var i = 0; i < this.length; i++)
                 {
-                    if (this[i].id == leilao.id)
-                        this[i] = leilao;
+                    if (this[i].id == lance.id)
+                        this[i] = lance;
                 }
             };
 
         }
+
+
 
         var config =
                 {
                     method: "GET",
                     timeout: 10000,
                     responseType: "json",
-                    url: "/leiloes",
+                    url: "/lances",
                     cache: false
                 };
 
         $http(config).then(sucessHandler, errorHandler);
 
     }
-    */
 
-
-
-    /*
-    $scope.listarPorDono = function ()
+    $scope.deletar = function (lance, lista)
     {
+
         function sucessHandler(response)
         {
-            $scope.lista = response.data.lista;
-
-            $scope.lista.delete = function (leilao)
-            {
-                for (var i = 0; i < this.length; i++)
-                {
-                    if (this[i].id == leilao.id)
-                        delete this[i];
-                }
-            };
-
-            $scope.lista.replace = function (leilao)
-            {
-                for (var i = 0; i < this.length; i++)
-                {
-                    if (this[i].id == leilao.id)
-                        this[i] = leilao;
-                }
-            };
-
+            lista.delete(lance);
         }
 
         var config =
                 {
-                    method: "GET",
+                    method: "DELETE",
                     timeout: 10000,
                     responseType: "json",
-                    url: "/leiloes/dono/6",
-                    cache: false
+                    url: "/lances/" + lance.id,
+                    cache: false,
+                    params: {lance: lance}
                 };
-
+                console.log(lance);
         $http(config).then(sucessHandler, errorHandler);
-    };
-    */
-            function errorHandler(response)
-            {
-                console.log(response);
-                //alert(response.data.errorMessage);
-            }
+    }
+
+    function errorHandler(response)
+    {
+        console.log(response);
+        //alert(response.data.errorMessage);
+    }
 });
 

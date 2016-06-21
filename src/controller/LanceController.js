@@ -1,5 +1,3 @@
-var Leilao = require("./../model/bean/Leilao");
-var LeilaoDAO = require("./../model/dao/LeilaoDAO");
 var Lance = require("./../model/bean/Lance");
 var LanceRN = require("./../model/rn/LanceRN");
 var LanceDAO = require("./../model/dao/LanceDAO");
@@ -16,24 +14,23 @@ module.exports = function (router)
         var dao = new LanceDAO();
         var lance = new Lance();
         var data = request.body;
+        //var session = request.session;
 
         //Popula Bean do leilão para validação e persistência
-        lance.popularLance(data);console.log("Qualquer merda");
+        lance.popularLance(data);
 
         //Monta o escopo onde os dados estarão disponíveis, através de callback e executa o cadastro
         rn.cadastrar(lance, dao, function (err, dbResponse)
         {
-            
+
             if (err)
             {
                 errorHandler(err, response);
-                console.log("erro");
-                
+
             } else
             {
                 response.location("http://" + request.hostname + "/lances/" + dbResponse);
                 response.status(201).send({message: "Lance dado com sucesso!"});
-                console.log("sucesso");
             }
         });
 
@@ -59,5 +56,44 @@ module.exports = function (router)
         });
 
     });
-    
+
+
+    //Método de exclusão
+    router.delete('/lances/:id', function (request, response)
+    {
+        //Declaração de objetos e recepção de dados do request
+        var rn = new LanceRN();
+        var dao = new LanceDAO();
+        var lance = new Lance();
+        var data = JSON.parse(request.query.lance);
+        var id = request.params.id;
+        var errorGenerator = new ErrorGenerator();
+        console.log(request.query);
+        //Popula Bean do leilão para validação e persistência
+        lance.popularLance(data);
+        
+        console.log("ID"+id);
+        console.log("GET"+lance.getId());
+        
+
+        if (lance.getId() != id)
+        {
+            var error = errorGenerator.getResourceConflictError("id");
+            response.location("http://" + request.host + "/lances/" + lance.getId());
+            errorHandler(error, response, 403);
+            return;
+        }
+        
+        
+
+        //Método que executa a exclusão dos dados
+        rn.deletar(lance, dao, function (err)
+        {
+            if (err){
+                errorHandler(err, response);}
+            else
+                response.status(200).send();
+        });
+
+    });
 };
