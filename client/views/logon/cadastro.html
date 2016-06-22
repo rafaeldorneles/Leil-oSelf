@@ -1,0 +1,72 @@
+
+<!-- Cabeçalho da Janela -->
+<div class="row" id="cabPag">
+    <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12">
+        <h1 style="text-align: center">Cadastro</h1>
+    </div>
+</div>
+
+<div class="container col-xs-12 col-lg-12 col-md-12 col-sm-12" style="margin-top: 10px;">
+    <div class="row">
+        <!-- Formulário -->
+        <form role="form" method="POST">
+            
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                        <label for="data_inic">
+                            Nome
+                        </label>
+                        <input type="text" ng-model="cadastro.nome" class="form-control" id="nome"  placeholder="Digite seu nome"/>                        
+                    </div>
+                  
+                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                        <label for="data_exec">
+                            E-mail
+                        </label>
+
+                        <input type="text" ng-model="cadastro.email" class="form-control" id="email" placeholder="Digite seu E-mail"/>  
+
+
+
+
+                    </div>
+                  
+
+            <div class="form-group">
+                <div class="row">
+                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label for="end_rua">
+                            Senha
+                        </label>
+                        <input type="password" ng-model="cadastro.senha" class="form-control" id="senha" placeholder="Digite sua senha"/>
+                    </div>
+                    
+                    <div class="form-group">
+                <div class="row">
+                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label for="end_rua">
+                            Confirmação senha
+                        </label>
+                        <input type="password" ng-model="cadastro.confirmaSenha" class="form-control" id="confirmaSenha" placeholder="Repita sua senha"/>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- Botões -->
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <!--<button type="button" ng-click="cadastrar(cadastro)" class="btn btn-toolbar"><span class="glyphicon glyphicon-save"></span>Cadastrar</button>-->
+                        <button type="button" ng-click="signUp(cadastro)" class="btn btn-primary btn-lg btn-block">Register</button>
+      
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+
+    </div>
+</div>

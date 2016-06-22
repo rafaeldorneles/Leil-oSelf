@@ -26,6 +26,29 @@ app.controller('PessoaController', function($scope, $http)
 		
 	};
 	
+        
+         $scope.signUp = function(pessoa)
+    {
+        
+    	function sucessHandler(response)
+        {
+            console.log(response);
+            alert(response.data.message);
+        }
+
+        var config =
+        {
+            method: "POST",
+            timeout: 10000,
+            responseType: "json",
+            url: "/pessoas",
+            cache: true,
+            data: pessoa
+        };
+
+        $http(config).then(sucessHandler, errorHandler);
+		
+	};
     $scope.listar = function()
     {
 		
@@ -183,7 +206,22 @@ app.controller('PessoaController', function($scope, $http)
         $http(config).then(sucessHandler, errorHandler);
         */
     };
-	
+    
+     $scope.validarSenha = function(cadastro)
+     {
+	    function validarSenha(cadastro){ 
+                
+            }
+	password = document.formulario.senha.value
+	confirmPassword = document.formulario.repetir_senha.value
+	if (senha != senhaRepetida){
+		alert("Repita a senha corretamente");
+		document.formulario.repetir_senha.focus();	
+		return false;
+	}
+}
+        
+        
     $scope.login = function()
     {
         function sucessHandler(response)
@@ -221,6 +259,8 @@ app.controller('PessoaController', function($scope, $http)
 
         $http(config).then(sucessHandler, errorHandler);
     };
+    
+
     function errorHandler(response)
     {
         console.log(response);
