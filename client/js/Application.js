@@ -62,6 +62,10 @@ angular.module('AppModule', ['ngRoute']).config(['$routeProvider', function ($ro
                     templateUrl: 'views/logon/cadastro.html',
                     controller: 'PessoaController'
                 })
+                 .when('/juridica-novo', {
+                    templateUrl: 'views/logon/cadastro-juridica.html',
+                    controller: 'PessoaController'
+                })
                 .when('/404', {
                     templateUrl: 'views/404.html'
                 })

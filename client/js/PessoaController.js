@@ -1,3 +1,4 @@
+
 var app = angular.module('AppModule');
 
 
@@ -5,9 +6,18 @@ app.controller('PessoaController', function($scope, $http)
 {
     $scope.cadastrar = function(pessoa)
     {
-        
+        console.log("entrou cadastrar");
+        console.log(pessoa);
+       
+         if(pessoa.senha != pessoa.confirmaSenha) {
+             
+        alert("Error: Senhas não conferem!");
+        console.log("senha Errada");
+        //pessoa.pwd1.focus();
+        return false;
+      }else
     	function sucessHandler(response)
-        {
+        { 
             console.log(response);
             alert(response.data.message);
         }
@@ -49,6 +59,47 @@ app.controller('PessoaController', function($scope, $http)
         $http(config).then(sucessHandler, errorHandler);
 		
 	};
+        
+        
+        //teste validação login
+        /*
+        var app = angular.module('myApp', []);
+
+app.controller("passwordVerify", function() {
+   return {
+      require: "ngModel",
+      scope: {
+        passwordVerify: '='
+      },
+      link: function(scope, element, attrs, ctrl) {
+        scope.$watch(function() {
+            var combined;
+
+            if (scope.passwordVerify || ctrl.$viewValue) {
+               combined = scope.passwordVerify + '_' + ctrl.$viewValue; 
+            }                    
+            return combined;
+        }, function(value) {
+            if (value) {
+                ctrl.$parsers.unshift(function(viewValue) {
+                    var origin = scope.passwordVerify;
+                    if (origin !== viewValue) {
+                        ctrl.$setValidity("passwordVerify", false);
+                        return undefined;
+                    } else {
+                        ctrl.$setValidity("passwordVerify", true);
+                        return viewValue;
+                    }
+                });
+            }
+        });
+     }
+   };
+});
+*/
+        
+        
+        
     $scope.listar = function()
     {
 		
@@ -205,6 +256,7 @@ app.controller('PessoaController', function($scope, $http)
 
         $http(config).then(sucessHandler, errorHandler);
         */
+       
     };
     
      $scope.validarSenha = function(cadastro)
