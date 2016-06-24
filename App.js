@@ -18,7 +18,11 @@ console.log("INFO: Initializing Application Server");
 
 var router = express();
 var server = http.createServer(router);
-var nodeSession = new NodeSession({secret: "myNudes"})
+var nodeSession = new NodeSession(
+{
+	secret: "myNudes",
+	'files': process.cwd() + '/.sessions',
+});
 
 console.log("INFO: Application server initialized sucessfully");
 

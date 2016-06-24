@@ -37,6 +37,31 @@ module.exports = function (router)
 
     });
 
+    router.post("/leiloes/encerrar/:id", function (request, response)
+	{
+		var LanceRN = require("./../model/rn/LanceRN");
+		var LanceDAO = require("./../model/dao/LanceDAO");
+		var lanceRn = new LanceRN();
+		var lanceDao = new LanceDAO();
+        var rn = new LeilaoRN();
+		var dao = new LeilaoDAO();
+		var id = request.params.id;
+
+		rn.encerrar(id, lanceRn, lanceDao, dao, function (err, winner)
+		{
+			if(err)
+			{
+				errorHandler(err);
+			}
+			else
+			{
+				response.status(200).send({winner: winner});
+			}
+
+		});
+		
+	});
+
     //Método de Listagem
     router.get('/leiloes', function (request, response)
     {
@@ -92,10 +117,8 @@ module.exports = function (router)
         var id = request.params.id;
 
 
-        leilao.setDono(id);
-
 		//Execução do método que busca pelo id
-		rn.buscarPorDono(dao, leilao, function (err, lista)
+		rn.buscarPorDono(dao, id, function (err, lista)
         {
             if (err)
             {

@@ -132,7 +132,7 @@ method.buscarPorDono = function (idDono, callback)
             }
             
             db.close();
-        }, {dono: idDono});
+        }, {"dono.id": parseInt(idDono)});
     });
 };
 

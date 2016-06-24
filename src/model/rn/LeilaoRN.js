@@ -21,7 +21,7 @@ method.cadastrar = function (leilao, dao, usuario,callback)
     if (!isDate(leilao, callback, this.errorGenerator))
         return;
     
-  	leilao.setDono();
+  	leilao.setDono(usuario);
 
     if ((leilao.getDataHoraFinal() - leilao.getDataHoraInicio()) < 0)
     {
@@ -47,6 +47,11 @@ method.cadastrar = function (leilao, dao, usuario,callback)
                 throw err;
         }
     });
+};
+
+method.encerrar = function (id, lanceRn, lanceDao, dao, callback)
+{
+	lanceRn.getWinner(id, lanceDao, callback);
 };
 
 method.listar = function (dao, callback)
@@ -77,9 +82,9 @@ method.buscar = function (dao, leilao, callback)
     });
 };
 
-method.buscarPorDono = function (dao, leilao, callback)
+method.buscarPorDono = function (dao, id, callback)
 {
-    dao.buscarPorDono(leilao.dono, function (err, lista)
+    dao.buscarPorDono(id, function (err, lista)
     {
         if (callback)
             callback(err, lista);
