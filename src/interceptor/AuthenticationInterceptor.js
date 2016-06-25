@@ -32,7 +32,7 @@ function needAuthorization(path, method)
 }
 
 
-module.exports = function (request, response, next)
+module.exports = function (request, response)
 {
 	var sessionManager = new SessionManager();
 	var errorGenerator = new ErrorGenerator();
@@ -44,20 +44,10 @@ module.exports = function (request, response, next)
 		{
 			errorGenerator.getNotAuthorizedError(function (err)
 			{
-				errorHandler(err, response);
+				errorHandler(request, err, response);
 			});
 		}
-		else
-		{
-			next();
-		}
 	}
-	else
-	{
-		next();
-	}
-
-
-
+	
 };
 

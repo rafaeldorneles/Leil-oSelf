@@ -19,7 +19,6 @@ module.exports = function (router)
 
         //Popula Bean do leilão para validação e persistência
         avaliacao.popularAvaliacao(data);
-        console.log("Qualquer merda - avaliacao");
 
         //Monta o escopo onde os dados estarão disponíveis, através de callback e executa o cadastro
         rn.cadastrar(avaliacao, dao,  function (err, dbResponse)
@@ -28,13 +27,11 @@ module.exports = function (router)
             if (err)
             {
                 errorHandler(err, response);
-                console.log("erro");
                 
             } else
             {
                 response.location("http://" + request.hostname + "/avaliacoes" + dbResponse);
-                response.status(201).send({message: "Avaliacao registrada com sucesso!"});
-                console.log("sucesso");
+                response.status(201).send({menus: request.menus, message: "Avaliacao registrada com sucesso!"});
             }
         });
     });
@@ -54,7 +51,7 @@ module.exports = function (router)
                 errorHandler(err, response);
             } else
             {
-                response.status(200).send({lista: lista});
+                response.status(200).send({menus: request.menus, lista: lista});
             }
         });
     });

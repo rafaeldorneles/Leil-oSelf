@@ -27,11 +27,11 @@ module.exports = function (router)
             
             if (err)
             {
-                errorHandler(err, response);
+                errorHandler(request, err, response);
             } else
             {
                 response.location("http://" + request.hostname + "/leiloes/" + dbResponse);
-                response.status(201).send({message: "Leilão cadastrado com sucesso!"});
+                response.status(201).send({menus: request.menus, message: "Leilão cadastrado com sucesso!"});
             }
         });
 
@@ -51,11 +51,11 @@ module.exports = function (router)
 		{
 			if(err)
 			{
-				errorHandler(err);
+				errorHandler(request,  err, response);
 			}
 			else
 			{
-				response.status(200).send({winner: winner});
+				response.status(200).send({menus: request.menus, winner: winner});
 			}
 
 		});
@@ -74,10 +74,10 @@ module.exports = function (router)
         {
             if (err)
             {
-                errorHandler(err, response);
+                errorHandler(request, err, response);
             } else
             {
-                response.status(200).send({lista: lista});
+                response.status(200).send({menus: request.menus, lista: lista});
             }
         });
 
@@ -99,10 +99,10 @@ module.exports = function (router)
         {
             if (err)
             {
-                errorHandler(err, response);
+                errorHandler(request, err, response);
             } else
             {
-                response.status(200).send({leilao: leilao});
+                response.status(200).send({menus: request.menus, leilao: leilao});
             }
         });
 
@@ -122,10 +122,10 @@ module.exports = function (router)
         {
             if (err)
             {
-                errorHandler(err, response);
+                errorHandler(request, err, response);
             } else
             {
-                response.status(200).send({lista: lista});
+                response.status(200).send({menus: request.menus, lista: lista});
             }
         });
 
@@ -149,7 +149,7 @@ module.exports = function (router)
         if (leilao.getId() != id)
         {
             var error = errorGenerator.getResourceConflictError("id");
-            errorHandler(error, response, 403);
+            errorHandler(request, error, response, 403);
             return;
         }
 
@@ -158,11 +158,11 @@ module.exports = function (router)
         {
             if (err)
             {
-                errorHandler(err, response, 304);
+                errorHandler(request, err, response, 304);
             } else
             {
                 response.location("http://" + request.host + "/leiloes/" + request.params.id);
-                response.status(200).send({message: "Leilão editado com sucesso!"});
+                response.status(200).send({menus: request.menus, message: "Leilão editado com sucesso!"});
             }
         });
 
@@ -185,7 +185,7 @@ module.exports = function (router)
         if (leilao.getId() != id)
         {
             var error = errorGenerator.getResourceConflictError("id");
-            errorHandler(error, response, 403);
+            errorHandler(request, error, response, 403);
             return;
         }
 
@@ -193,9 +193,9 @@ module.exports = function (router)
         rn.deletar(leilao, dao, function (err)
         {
             if (err)
-                errorHandler(err, response);
+                errorHandler(request, err, response);
             else
-                response.status(200).send();
+                response.status(200).send({menus: request.menus});
         });
 
     });

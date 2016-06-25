@@ -27,7 +27,7 @@ module.exports = function (router)
             } else
             {
                 response.location("http://" + request.hostname + "/pessoas/" + dbResponse);
-                response.status(201).send({message: "Pessoa cadastrado com sucesso!"});
+                response.status(201).send({menus: request.menus, message: "Pessoa cadastrado com sucesso!"});
             }
         });
 
@@ -48,7 +48,7 @@ module.exports = function (router)
                 errorHandler(err, response);
             } else
             {
-                response.status(200).send({lista: lista});
+                response.status(200).send({menus: request.menus, lista: lista});
             }
         });
 
@@ -74,7 +74,7 @@ module.exports = function (router)
                 errorHandler(err, response);
             } else
             {
-                response.status(200).send({pessoa: pessoa});
+                response.status(200).send({menus: request.menus, pessoa: pessoa});
             }
         });
     });
@@ -99,7 +99,7 @@ module.exports = function (router)
                 errorHandler(err, response);
             } else
             {
-                response.status(200).send({pessoa: pessoa});
+                response.status(200).send({menus: request.menus, pessoa: pessoa});
             }
         });
     });
@@ -135,7 +135,7 @@ module.exports = function (router)
             } else
             {
                 response.location("http://" + request.host + "/pessoas/" + request.params.id);
-                response.status(200).send({message: "Pessoa editada com sucesso!"});
+                response.status(200).send({menus: request.menus, message: "Pessoa editada com sucesso!"});
             }
         });
 
@@ -168,7 +168,7 @@ module.exports = function (router)
             if (err)
                 errorHandler(err, response);
             else
-                response.status(200).send();
+                response.status(200).send({menus: request.menus});
         });
 
     });

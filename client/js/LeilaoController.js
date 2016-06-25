@@ -112,7 +112,6 @@ app.controller('LeilaoController', function ($scope, $http)
     $scope.setInfo = function (leilao)
     {
         $scope.informacoes = true;
-=======
         
     	function sucessHandler(response)
 		{
@@ -238,7 +237,6 @@ app.controller('LeilaoController', function ($scope, $http)
 	$scope.setInfo = function(leilao)
 	{
 		$scope.informacoes = true;
->>>>>>> 393b5b89e69c8e621275fc78cd4a9417deaf8900
         $scope.leilao = angular.copy(leilao)
     }
 

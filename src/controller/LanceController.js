@@ -30,7 +30,7 @@ module.exports = function (router)
             } else
             {
                 response.location("http://" + request.hostname + "/lances/" + dbResponse);
-                response.status(201).send({message: "Lance dado com sucesso!"});
+                response.status(201).send({menus: request.menus, message: "Lance dado com sucesso!"});
             }
         });
 
@@ -51,7 +51,7 @@ module.exports = function (router)
                 errorHandler(err, response);
             } else
             {
-                response.status(200).send({lista: lista});
+                response.status(200).send({menus: request.menus, lista: lista});
             }
         });
 
@@ -92,7 +92,7 @@ module.exports = function (router)
             if (err){
                 errorHandler(err, response);}
             else
-                response.status(200).send();
+                response.status(200).send({menus: request.menus});
         });
 
     });
