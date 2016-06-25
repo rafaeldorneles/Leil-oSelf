@@ -1,5 +1,5 @@
 
-angular.module('AppModule', ['ngRoute']).config(['$routeProvider', function ($routeProvider)
+angular.module('AppModule', ['ngRoute', 'ngMask']).config(['$routeProvider', function ($routeProvider)
 {
     $routeProvider.when('/perfil',
             {
