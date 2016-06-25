@@ -1,47 +1,46 @@
 {
-    "name": "leilao-servicos",
-    "version": "1.0.0",
-    "description": "Web service to interact with interface for services auction.",
-    "main": "App.js",
-    "constributors":
-    [
-        {
-            "name": "Allisson",
-            "email": "alndedigo@gmail.com"
-        },
-        {
-            "name": "Eduardo",
-            "email": "eduardosouza.developer@gmail.com"
-        },
-        {
-            "name": "Gabriel Schaidhauer",
-            "email": "gabriel.schaidhauer@gmail.com"
-        },
-        {
-            "name": "Gilberto",
-            "email": "beto.wiatrowski@gmail.com"
-        },
-        {
-            "name": "Rafael",
-            "email": "rafael.bke@gmail.com"
-        }
-    ],
-    "repository":
+  "name": "leilao-servicos",
+  "version": "1.0.0",
+  "description": "Web service to interact with interface for services auction.",
+  "main": "App.js",
+  "constributors": [
     {
-        "type": "git",
-        "url": "https://github.com/gabrielSchaidhauer/LeilaoServicos"
+      "name": "Allisson",
+      "email": "alndedigo@gmail.com"
     },
-    "bugs":
     {
-        "email": "gabriel.schaidhauer@gmail.com"
+      "name": "Eduardo",
+      "email": "eduardosouza.developer@gmail.com"
     },
-    "dependencies":
     {
-        "express": "4.13.*",
-        "mongodb": "2.1.*",
-        "body-parser":  "1.15.*",
-        "node-session": "1.2.*"
+      "name": "Gabriel Schaidhauer",
+      "email": "gabriel.schaidhauer@gmail.com"
     },
-    "devDependencies": {},
-    "private": true
+    {
+      "name": "Gilberto",
+      "email": "beto.wiatrowski@gmail.com"
+    },
+    {
+      "name": "Rafael",
+      "email": "rafael.bke@gmail.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gabrielSchaidhauer/LeilaoServicos"
+  },
+  "bugs": {
+    "email": "gabriel.schaidhauer@gmail.com"
+  },
+  "dependencies": {
+    "body-parser": "1.15.*",
+    "express": "4.13.*",
+    "mongodb": "2.1.*",
+    "node-session": "1.2.*"
+  },
+  "devDependencies": {},
+  "private": true,
+  "scripts": {
+    "start": "node App.js"
+  }
 }

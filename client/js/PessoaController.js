@@ -9,13 +9,7 @@ app.controller('PessoaController', function($scope, $http)
         console.log("entrou cadastrar");
         console.log(pessoa);
        
-         if(pessoa.senha != pessoa.confirmaSenha) {
-             
-        alert("Error: Senhas não conferem!");
-        console.log("senha Errada");
-        //pessoa.pwd1.focus();
-        return false;
-      }else
+        
     	function sucessHandler(response)
         { 
             console.log(response);
@@ -305,7 +299,7 @@ app.controller("passwordVerify", function() {
             method: "GET",
             timeout: 10000,
             responseType: "json",
-            url: "/pessoas/1?1",//mudar
+            url: "/pessoas/"+ pessoa,//mudar
             cache: false
         };
 
@@ -316,7 +310,7 @@ app.controller("passwordVerify", function() {
     function errorHandler(response)
     {
         console.log(response);
-       // alert(response.data.errorMessage);
+        //alert(response.data.errorMessage);
     }
 
 });

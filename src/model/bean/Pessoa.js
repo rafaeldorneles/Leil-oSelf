@@ -32,7 +32,7 @@ method.setNome = function(nome)
 	this.nome = nome;
 }
 
-method.setSobrenomme = function(sobrenome)
+method.setSobrenome = function(sobrenome)
 {
 	this.sobrenome = sobrenome;	
 }
@@ -154,7 +154,7 @@ method.popularPessoa= function (pessoa)
     this.setUsername(pessoa.username);
     this.setSenha(pessoa.senha);
     this.setEmail(pessoa.email);
-    this.setTelefones(pessoa.telefones)
+    this.setTelefones(pessoa.telefones);
 };
 //==================================EXPORT======================
 

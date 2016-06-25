@@ -54,6 +54,10 @@ angular.module('AppModule', ['ngRoute']).config(['$routeProvider', function ($ro
                 templateUrl: 'views/avaliacao-do-usuario.html',
                 controller: 'AvaliacaoController'
             })
+            .when('/login', {
+                templateUrl: 'views/logon/login.html',
+                controller: 'AvaliacaoController'
+            })
             .when('/404', {
                 templateUrl: 'views/404.html'
             })

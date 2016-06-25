@@ -8,8 +8,8 @@ this.errorGenerator;
 this.sessionManager;
  
  function PessoaRN(){
-     this.errorGenerator = new ErrorGenerator();
-    // this.sessionManager = new SessionValidator();
+    this.errorGenerator = new ErrorGenerator();
+    this.sessionManager = new SessionValidator();
  }
  
  method.cadastrar = function (pessoa, dao,callback)
@@ -50,8 +50,9 @@ this.sessionManager;
 
 };
 
-method.login = function (dao, pessoa, callback)
+method.login = function (dao, pessoa,session, callback)
 {
+    var resultSession = sessionManager.logar(session,pessoa);
     dao.login(pessoa.username,pessoa.senha, function (err, lista)
     {
         if (callback)
@@ -65,6 +66,7 @@ method.login = function (dao, pessoa, callback)
 method.buscar = function (dao, pessoa, callback)
 {
 
+   
     dao.buscar(pessoa.id, function (err, pessoa)
     {
         if (callback)
