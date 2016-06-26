@@ -21,7 +21,7 @@ app.controller('PessoaController', function($scope, $http)
             method: "POST",
             timeout: 10000,
             responseType: "json",
-            url: "/pessoas",
+            url: "/pessoas/",
             cache: true,
             data: pessoa
         };
@@ -268,39 +268,25 @@ app.controller("passwordVerify", function() {
 }
         
         
-    $scope.login = function()
+    $scope.login = function(pessoa)
     {
+         console.log(pessoa);
         function sucessHandler(response)
         {
-            $scope.lista = response.data.lista;
-
-            $scope.lista.delete = function(pessoa)
-            {
-                for(var i = 0; i < this.length; i++)
-                {
-                    if(this[i].id == pessoa.id)
-                        delete this[i];
-                }
-            };
-
-            $scope.lista.replace = function(pessoa)
-            {
-                for(var i = 0; i < this.length; i++)
-                {
-                    if(this[i].id == pessoa.id)
-                        this[i] = pessoa;
-                }
-            };
-
+            console.log(response);
+            alert("Bem-vindo!");
+           window.location.assign("http://localhost:3000/#/");
+            
         }
 
         var config = 
         {
-            method: "GET",
+            method: "POST",
             timeout: 10000,
             responseType: "json",
-            url: "/pessoas/"+ pessoa,//mudar
-            cache: false
+            url: "/pessoas/login/",
+            cache: false,
+            params: {pessoa: pessoa}
         };
 
         $http(config).then(sucessHandler, errorHandler);

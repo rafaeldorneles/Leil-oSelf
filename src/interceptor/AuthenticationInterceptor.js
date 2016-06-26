@@ -10,7 +10,7 @@ function needAuthorization(path, method)
 	{
 		leiloes: ["POST", "PUT", "DELETE"],
 		lances: ["POST", "PUT", "DELETE"],
-		pessoas: ["POST", "PUT", "DELETE"],
+		pessoas: ["PUT", "DELETE"],
 		avaliacoes: ["POST", "PUT", "DELETE"]
 	};
 

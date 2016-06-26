@@ -56,7 +56,7 @@ angular.module('AppModule', ['ngRoute', 'ngMask']).config(['$routeProvider', fun
             })
             .when('/login', {
                 templateUrl: 'views/logon/login.html',
-                controller: 'AvaliacaoController'
+                controller: 'PessoaController'
             })
             .when('/404', {
                 templateUrl: 'views/404.html'

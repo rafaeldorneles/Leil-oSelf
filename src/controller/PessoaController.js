@@ -3,6 +3,7 @@ var PessoaRN = require("./../model/rn/PessoaRN");
 var PessoaDAO = require("./../model/dao/PessoaDAO");
 var errorHandler = require("./../util/errorHandler");
 var ErrorGenerator = require("./../util/ErrorGenerator");
+var SessionManager = require("./../util/SessionManager");
 
 module.exports = function (router)
 {
@@ -62,7 +63,8 @@ module.exports = function (router)
         var rn = new PessoaRN();
         var dao = new PessoaDAO();
         var pessoa = new Pessoa();
-        var data = request.body;
+        var data = JSON.parse(request.query.pessoa);
+        var sessionManager = new SessionManager();
 
        pessoa.popularPessoa(data);
        
@@ -74,7 +76,10 @@ module.exports = function (router)
                 errorHandler(err, response);
             } else
             {
+                sessionManager.logar(request.session,pessoa);
+                
                 response.status(200).send({menus: request.menus, pessoa: pessoa});
+                
             }
         });
     });

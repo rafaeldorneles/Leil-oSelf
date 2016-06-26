@@ -6,6 +6,7 @@ this.conn;
 function PessoaDAO()
 {
     this.conn = new Conexao();
+  
 }
 
 method.cadastrar = function (pessoa, callback)
@@ -112,12 +113,8 @@ method.buscar = function (id, callback)
          }
          conn.buscar("Pessoa",db,function(err,pessoas)
          {
-             for(var i=0; i<pessoas.length; i++)
-             {
-                 var p = new Pessoa();
-                 p.popularPessoa(pessoas[i]);
-                 pessoas[i] = p;
-             }
+            var pessoa = new Pessoa();
+            pessoa.popularPessoa(pessoas[0]);
              if(callback)
                  callback(err, pessoas);
              else

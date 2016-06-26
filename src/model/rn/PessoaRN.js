@@ -50,9 +50,8 @@ this.sessionManager;
 
 };
 
-method.login = function (dao, pessoa,session, callback)
+method.login = function (dao, pessoa, callback)
 {
-    var resultSession = sessionManager.logar(session,pessoa);
     dao.login(pessoa.username,pessoa.senha, function (err, lista)
     {
         if (callback)
@@ -61,6 +60,7 @@ method.login = function (dao, pessoa,session, callback)
         if (err)
             throw err;
     });
+    
 };
 
 method.buscar = function (dao, pessoa, callback)
