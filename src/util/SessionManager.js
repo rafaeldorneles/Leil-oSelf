@@ -24,5 +24,4 @@ method.getUser = function (session)
 	return session.get("user");
 };
 
-
 module.exports = SessionManager;

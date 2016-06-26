@@ -1,5 +1,4 @@
 var method = PessoaRN.prototype;
-var errorHandler = require("./../../util/errorHandler");
 var ErrorGenerator = require("./../../util/ErrorGenerator");
 var isValidDate = require("./../../util/isValidDate");
 var SessionValidator = require("./../../util/SessionManager");
@@ -77,7 +76,6 @@ method.buscar = function (dao, pessoa, callback)
     });
 };
 
-
 method.deletar = function (pessoa, dao, callback)
 {
     dao.deletar(pessoa, function (err, dbResponse)
@@ -91,7 +89,6 @@ method.deletar = function (pessoa, dao, callback)
         }
     });
 };
-
 
 method.editar = function (pessoa, dao, callback)
 {
@@ -118,7 +115,6 @@ method.editar = function (pessoa, dao, callback)
     });
 
 };
-
 
 function isNumber(pessoa, callback, errorGenerator)
 {

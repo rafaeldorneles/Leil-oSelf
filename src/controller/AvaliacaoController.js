@@ -4,7 +4,6 @@ var Avaliacao = require("./../model/bean/Avaliacao");
 var AvaliacaoRN = require("./../model/rn/AvaliacaoRN");
 var AvaliacaoDAO = require("./../model/dao/AvaliacaoDAO");
 var errorHandler = require("./../util/errorHandler");
-var ErrorGenerator = require("./../util/ErrorGenerator");
 
 module.exports = function (router)
 {
@@ -31,7 +30,7 @@ module.exports = function (router)
             } else
             {
                 response.location("http://" + request.hostname + "/avaliacoes" + dbResponse);
-                response.status(201).send({menus: request.menus, message: "Avaliacao registrada com sucesso!"});
+                response.status(201).send({message: "Avaliacao registrada com sucesso!"});
             }
         });
     });
@@ -51,7 +50,7 @@ module.exports = function (router)
                 errorHandler(err, response);
             } else
             {
-                response.status(200).send({menus: request.menus, lista: lista});
+                response.status(200).send({lista: lista});
             }
         });
     });

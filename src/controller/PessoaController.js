@@ -28,7 +28,7 @@ module.exports = function (router)
             } else
             {
                 response.location("http://" + request.hostname + "/pessoas/" + dbResponse);
-                response.status(201).send({menus: request.menus, message: "Pessoa cadastrado com sucesso!"});
+                response.status(201).send({message: "Pessoa cadastrado com sucesso!"});
             }
         });
 
@@ -49,13 +49,12 @@ module.exports = function (router)
                 errorHandler(err, response);
             } else
             {
-                response.status(200).send({menus: request.menus, lista: lista});
+                response.status(200).send({lista: lista});
             }
         });
 
     });
-    
-    
+
      //Métodologin
     router.post('/pessoas/login', function (request, response)
     {
@@ -76,17 +75,29 @@ module.exports = function (router)
                 errorHandler(err, response);
             } else
             {
-                sessionManager.logar(request.session,pessoa);
-                
-                response.status(200).send({menus: request.menus, pessoa: pessoa});
-                
+                response.status(200).send({pessoa: pessoa});
             }
         });
     });
+
+	router.get("/pessoas/isLogged", function (request, response)
+	{
+		var sessionManager = new SessionManager();
+
+		if(sessionManager.isLogged(request.session))
+		{
+			var usuario = sessionManager.getUser(request.session);
+			response.location("http://" + request.hostname + "/pessoas/" + usuario.id);
+			response.status(200).send({user: usuario});
+		}
+		else
+			response.status(200).send({user: null});
+
+	});
+
      //Método de busca por id
     router.get('/pessoas/:id', function (request, response)
     {
-        console.log("entrei");
         //Declaração de objetos e recepção de dados do request
         var rn = new PessoaRN();
         var dao = new PessoaDAO();
@@ -104,7 +115,7 @@ module.exports = function (router)
                 errorHandler(err, response);
             } else
             {
-                response.status(200).send({menus: request.menus, pessoa: pessoa});
+                response.status(200).send({pessoa: pessoa});
             }
         });
     });
@@ -140,7 +151,7 @@ module.exports = function (router)
             } else
             {
                 response.location("http://" + request.host + "/pessoas/" + request.params.id);
-                response.status(200).send({menus: request.menus, message: "Pessoa editada com sucesso!"});
+                response.status(200).send({message: "Pessoa editada com sucesso!"});
             }
         });
 
@@ -173,8 +184,9 @@ module.exports = function (router)
             if (err)
                 errorHandler(err, response);
             else
-                response.status(200).send({menus: request.menus});
+                response.status(200).send();
         });
 
     });
+
 };

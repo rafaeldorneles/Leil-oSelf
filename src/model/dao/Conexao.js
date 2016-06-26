@@ -2,7 +2,6 @@ var method = Conexao.prototype;
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 var JsonReader = require("./../../util/JsonFileReader");
-//var url = "mongodb://leilaoUser:S3gur4nc4@localhost:27017/LeilaoServicos";
 
 this.jsonReader;
 this.mongo;
@@ -36,7 +35,6 @@ method.conectar = function (callback)
     });
 };
 
-
 method.cadastrar = function(entity, db, callback)
 {       
     db.collection(entity.constructor.name).insertOne(entity, function(err, result)
@@ -52,7 +50,6 @@ method.cadastrar = function(entity, db, callback)
         }
     });
 };
-
 
 method.buscar = function (collection, db, callback, args, sort)
 {   

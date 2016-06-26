@@ -1,7 +1,5 @@
 var method = Leilao.prototype;
 
-
-
 //Listagem de Atributos
 this.id;
 this.dono;

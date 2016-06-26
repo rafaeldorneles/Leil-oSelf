@@ -14,7 +14,6 @@ module.exports = function (router)
         var dao = new LanceDAO();
         var lance = new Lance();
         var data = request.body;
-        //var session = request.session;
 
         //Popula Bean do leilão para validação e persistência
         lance.popularLance(data);
@@ -30,7 +29,7 @@ module.exports = function (router)
             } else
             {
                 response.location("http://" + request.hostname + "/lances/" + dbResponse);
-                response.status(201).send({menus: request.menus, message: "Lance dado com sucesso!"});
+                response.status(201).send({message: "Lance dado com sucesso!"});
             }
         });
 
@@ -51,13 +50,12 @@ module.exports = function (router)
                 errorHandler(err, response);
             } else
             {
-                response.status(200).send({menus: request.menus, lista: lista});
+                response.status(200).send({lista: lista});
             }
         });
 
     });
-
-
+	
     //Método de exclusão
     router.delete('/lances/:id', function (request, response)
     {
@@ -68,12 +66,10 @@ module.exports = function (router)
         var data = JSON.parse(request.query.lance);
         var id = request.params.id;
         var errorGenerator = new ErrorGenerator();
-        console.log(request.query);
+
+
         //Popula Bean do leilão para validação e persistência
         lance.popularLance(data);
-        
-        console.log("ID"+id);
-        console.log("GET"+lance.getId());
         
 
         if (lance.getId() != id)
@@ -92,7 +88,7 @@ module.exports = function (router)
             if (err){
                 errorHandler(err, response);}
             else
-                response.status(200).send({menus: request.menus});
+                response.status(200).send();
         });
 
     });

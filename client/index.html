@@ -56,7 +56,7 @@
             <div ng-view></div>
         </div>
         <!-- Rodapé -->
-        <div class="navbar navbar-fixed-bottom" role="navigation" id="rodape" ng-controller="AppController">
+        <div class="navbar navbar-fixed-bottom" role="navigation" id="rodape">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -65,9 +65,28 @@
                 </div>
                 <nav class="navbar-collapse collapse">
                     <ul class="nav nav-justified">
-                        <li><a href="#/"   id="btnTXT"  ><i class="fa fa-home"   style="font-size:24px ;color:orange"    aria-hidden="true"></i>  Home</a></li>
-                        <li ng-repeat="menu in menus"><a href="{{menu.href}}" id="btnTXT"><img src="{{menu.src}}" id="menuIcon">  {{menu.text}}</a></li>
-                    </ul>
+                    <li>
+                        <a href="#/" id="btnTXT"  ><i class="fa fa-home" style="font-size:24px ;color:orange" aria-hidden="true"></i>  Home</a>
+                    </li>
+                    <li ng-hide="!showMenu">
+                        <a href="#/perfil" id="btnTXT"><img src="img/user.svg" id="menuIcon">  Perfil</a>
+                    </li>
+                    <li ng-hide="!showMenu">
+                        <a href="#/leiloes-leiloes" id="btnTXT"><img src="img/meus-leiloes.svg" id="menuIcon">  Meus Leilões</a>
+                    </li>
+                    <li ng-hide="!showMenu">
+                        <a href="#/meus-lances" id="btnTXT"><img src="img/meus-lances.svg" id="menuIcon">  Meus Lances</a>
+                    </li>
+                    <li>
+                        <a href="#/leiloes-abertos" id="btnTXT"><img src="img/leiloes-abertos.svg" id="menuIcon">  Leilões Abertos</a>
+                    </li>
+                    <li ng-hide="!showMenu">
+                        <a href="#/leilao-novo" id="btnTXT"><img src="img/new-file.svg" id="menuIcon">  Leilão Novo</a>
+                    </li>
+                    <li>
+                        <a href="#/sobre" id="btnTXT"><img src="img/info.svg" id="menuIcon">  Sobre</a>
+                    </li>
+                </ul>
                 </nav>
             </div>
         </div>

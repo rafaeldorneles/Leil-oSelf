@@ -1,8 +1,7 @@
 
 var app = angular.module('AppModule');
 
-
-app.controller('PessoaController', function($scope, $http) 
+app.controller('PessoaController', function($scope, $http, $rootScope)
 {
     $scope.cadastrar = function(pessoa)
     {
@@ -29,9 +28,8 @@ app.controller('PessoaController', function($scope, $http)
         $http(config).then(sucessHandler, errorHandler);
 		
 	};
-	
-        
-         $scope.signUp = function(pessoa)
+
+    $scope.signUp = function(pessoa)
     {
         
     	function sucessHandler(response)
@@ -53,46 +51,6 @@ app.controller('PessoaController', function($scope, $http)
         $http(config).then(sucessHandler, errorHandler);
 		
 	};
-        
-        
-        //teste validação login
-        /*
-        var app = angular.module('myApp', []);
-
-app.controller("passwordVerify", function() {
-   return {
-      require: "ngModel",
-      scope: {
-        passwordVerify: '='
-      },
-      link: function(scope, element, attrs, ctrl) {
-        scope.$watch(function() {
-            var combined;
-
-            if (scope.passwordVerify || ctrl.$viewValue) {
-               combined = scope.passwordVerify + '_' + ctrl.$viewValue; 
-            }                    
-            return combined;
-        }, function(value) {
-            if (value) {
-                ctrl.$parsers.unshift(function(viewValue) {
-                    var origin = scope.passwordVerify;
-                    if (origin !== viewValue) {
-                        ctrl.$setValidity("passwordVerify", false);
-                        return undefined;
-                    } else {
-                        ctrl.$setValidity("passwordVerify", true);
-                        return viewValue;
-                    }
-                });
-            }
-        });
-     }
-   };
-});
-*/
-        
-        
         
     $scope.listar = function()
     {
@@ -133,31 +91,6 @@ app.controller("passwordVerify", function() {
         $http(config).then(sucessHandler, errorHandler);
 
     };
-
-/*
-    $scope.cadastrarAvaliacao = function (avaliacao)
-    {
-        console.log(avaliacao);
-
-        function sucessHandler(response)
-        {
-            console.log(response);
-            //alert(response.data.message);
-        }
-        
-        var config =
-                {
-                    method: "POST",
-                    timeout: 10000,
-                    responseType: "json",
-                    url: "/avaliacao",
-                    cache: true,
-                    data: avaliacao
-                };
-
-        $http(config).then(sucessHandler, errorHandler);
-    };
-*/    
     
     $scope.deletar = function(pessoa, lista)
     {
@@ -213,48 +146,8 @@ app.controller("passwordVerify", function() {
         $scope.informacoes = false;
     }
 
-    $scope.buscar = function()
-    {
-        /*
-        function sucessHandler(response)
-        {
-            $scope.lista = response.data.lista;
-
-            $scope.lista.delete = function(pessoa)
-            {
-                for(var i = 0; i < this.length; i++)
-                {
-                    if(this[i].id == pessoa.id)
-                        delete this[i];
-                }
-            };
-
-            $scope.lista.replace = function(pessoa)
-            {
-                for(var i = 0; i < this.length; i++)
-                {
-                    if(this[i].id == pessoa.id)
-                        this[i] = pessoa;
-                }
-            };
-        }
-
-        var config = 
-        {
-            method: "GET",
-            timeout: 10000,
-            responseType: "json",
-            url: "/Pessoa",
-            cache: false
-        };
-
-        $http(config).then(sucessHandler, errorHandler);
-        */
-       
-    };
-    
-     $scope.validarSenha = function(cadastro)
-     {
+	$scope.validarSenha = function(cadastro)
+	{
 	    function validarSenha(cadastro){ 
                 
             }
@@ -291,7 +184,6 @@ app.controller("passwordVerify", function() {
 
         $http(config).then(sucessHandler, errorHandler);
     };
-    
 
     function errorHandler(response)
     {

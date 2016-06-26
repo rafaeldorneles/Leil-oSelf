@@ -19,7 +19,6 @@ function Pessoa()
 	
 }
 
-
 //==================================SETTERS======================
 
 method.setId = function(id)

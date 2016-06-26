@@ -101,6 +101,7 @@ method.buscar = function (id, callback)
         
     });
 };
+
  method.login = function (usuario,senha,callback)
  {
      var conn = this.conn;

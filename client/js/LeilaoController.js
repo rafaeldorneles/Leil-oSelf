@@ -287,7 +287,7 @@ app.controller('LeilaoController', function ($scope, $http)
                     method: "GET",
                     timeout: 10000,
                     responseType: "json",
-                    url: "/leiloes/dono/6",
+                    url: "/leiloes/dono/",
                     cache: false
                 };
 
