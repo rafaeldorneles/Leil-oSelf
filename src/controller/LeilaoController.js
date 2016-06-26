@@ -115,8 +115,7 @@ module.exports = function (router)
         var dao = new LeilaoDAO();
         var leilao = new Leilao();
         var id = request.params.id;
-
-
+        
 		//Execução do método que busca pelo id
 		rn.buscarPorDono(dao, id, function (err, lista)
         {

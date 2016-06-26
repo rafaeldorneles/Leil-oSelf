@@ -128,6 +128,23 @@ angular.module('AppModule', ['ngRoute', "ngMask"]).config(['$routeProvider', fun
 		}
 	};
 
+	$rootScope.dateTimeConverter = function (data)
+	{
+		var partes = data.split(' ');
+		var tempo = partes[1];
+		var splittedDate = partes[0].split('/').reverse();
+		var datetime = splittedDate.join('-') + ' ' + tempo;
+
+		return datetime;
+	};
+
+	$rootScope.dateConverter = function (data)
+	{
+		var splittedDate = data	.split('/').reverse();
+		var date = splittedDate.join('-');
+		return date;
+	};
+
 });
 
 

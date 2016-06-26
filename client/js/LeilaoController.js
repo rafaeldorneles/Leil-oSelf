@@ -1,10 +1,13 @@
 var app = angular.module('AppModule');
 
 
-app.controller('LeilaoController', function ($scope, $http)
+app.controller('LeilaoController', function ($scope, $http, $rootScope)
 {
     $scope.cadastrar = function (leilao)
     {
+		leilao.dataHoraInicio  = $rootScope.dateTimeConverter(leilao.dataHoraInicio);
+		leilao.dataHoraFinal = $rootScope.dateTimeConverter(leilao.dataHoraFinal);
+		leilao.dataHoraExecucao = $rootScope.dateTimeConverter(leilao.dataHoraExecucao);
 
         function sucessHandler(response)
         {
