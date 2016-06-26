@@ -55,6 +55,14 @@ module.exports = function (router)
 
     });
 
+	router.post("/pessoas/logoff", function (request, response)
+	{
+		var sessionManager = new SessionManager();
+		
+		sessionManager.deslogar(request.session);
+		response.status(200).send();
+	});
+
      //Métodologin
     router.post('/pessoas/login', function (request, response)
     {

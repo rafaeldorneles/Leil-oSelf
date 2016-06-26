@@ -1,5 +1,5 @@
 
-angular.module('AppModule', ['ngRoute']).config(['$routeProvider', function ($routeProvider)
+angular.module('AppModule', ['ngRoute', "ngMask"]).config(['$routeProvider', function ($routeProvider)
 {
 
     $routeProvider.when('/perfil',
@@ -86,18 +86,15 @@ angular.module('AppModule', ['ngRoute']).config(['$routeProvider', function ($ro
 		function sucessHandler(response)
 		{
 			if(response.data.user) {
-				console.log("nao nulo");
 				$rootScope.showMenu = true;
 			}
 			else {
-				console.log("nulo");
 				$rootScope.showMenu = false;
 			}
 		}
 
 		function errorHandler(response)
 		{
-			console.log("erro");
 			$rootScope.showMenu = false;
 		}
 
@@ -105,6 +102,31 @@ angular.module('AppModule', ['ngRoute']).config(['$routeProvider', function ($ro
 	};
 
 	$rootScope.isLogged();
+	
+	$rootScope.deslogar = function ()
+	{
+		var config =
+		{
+			method: "POST",
+			timeout: 10000,
+			responseType: "json",
+			url: "/pessoas/logoff/",
+			cache: true
+		};
+
+		$http(config).then(sucessHandler, errorHandler);
+
+		function sucessHandler(response)
+		{
+			location.href = "#/";
+			$rootScope.showMenu = false;
+		}
+
+		function errorHandler(response)
+		{
+
+		}
+	};
 
 });
 

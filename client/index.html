@@ -38,9 +38,10 @@
                       
                    
                         
-                        <a href="#perfil-novo" id="btnTXT"><button type="button" class="btn btn-default ,btn pull-right ">Cadastrar</button></a>
-                        <a href="#login" id="btnTXT"><button type="button" class="btn btn-primary , btn pull-right">Entrar</button></a>
-                       
+                        <a href="#perfil-novo" id="btnTXT"><button type="button" class="btn btn-default ,btn pull-right" ng-hide="showMenu">Cadastrar</button></a>
+                        <a href="#login" id="btnTXT"><button type="button" class="btn btn-primary , btn pull-right" ng-hide="showMenu">Entrar</button></a>
+                        <a id="btnTXT" ng-click="deslogar();"><button type="button" class="btn btn-primary , btn pull-right" ng-hide="!showMenu">Sair</button></a>
+
                         </div>
 
                         
