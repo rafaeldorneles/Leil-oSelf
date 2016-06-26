@@ -19,9 +19,9 @@ app.controller('PessoaController', function($scope, $http, $rootScope)
     }else
         
     	function sucessHandler(response)
-        { 
-            console.log(response);
+        {
             alert(response.data.message);
+            location.href = "#/"
         }
 
         var config =
@@ -172,12 +172,13 @@ app.controller('PessoaController', function($scope, $http, $rootScope)
         
     $scope.login = function(pessoa)
     {
-         console.log(pessoa);
+        console.log(pessoa);
         function sucessHandler(response)
         {
             console.log(response);
             alert("Bem-vindo!");
-           window.location.assign("http://localhost:3000/#/");
+            $rootScope.showMenu = true;
+            window.location.assign("http://localhost:3000/#/");
             
         }
 

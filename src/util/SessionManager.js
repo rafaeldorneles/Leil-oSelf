@@ -8,20 +8,22 @@ function SessionManager()
 
 method.isLogged = function (session)
 {
-    if (!session.get("user"))
-        return false;
+    if (!session.user)
+	{
+		return false;
+	}
 
     return true;
 };
 
 method.logar = function (session, usuario)
 {
-    session.put("user", usuario);
+    session.user = usuario;
 };
 
 method.getUser = function (session)
 {
-	return session.get("user");
+	return session.user;
 };
 
 module.exports = SessionManager;

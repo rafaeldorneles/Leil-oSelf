@@ -63,19 +63,20 @@ module.exports = function (router)
         var dao = new PessoaDAO();
         var pessoa = new Pessoa();
         var data = JSON.parse(request.query.pessoa);
-        var sessionManager = new SessionManager();
 
        pessoa.popularPessoa(data);
-       
-       console.log(pessoa);
-        rn.login(dao, pessoa, function (err, pessoa)
+
+        rn.login(request.session, dao, pessoa, function (err, sucess)
         {
             if (err)
             {
                 errorHandler(err, response);
             } else
             {
-                response.status(200).send({pessoa: pessoa});
+                if(sucess)
+                    response.status(200).send();
+                else
+                    response.status(401).send();
             }
         });
     });

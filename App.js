@@ -1,3 +1,14 @@
+function secret()
+{
+	var text = "";
+	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,;[]{}/?()!@#$%";
+
+	for( var i=0; i < 20; i++ )
+		text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+	return text;
+}
+
 //Requires independentes de recursos================================
 console.log("INFO: Requiring NPM Dependencies");
 
@@ -5,7 +16,8 @@ var http = require('http');
 var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
-var NodeSession = require("node-session");
+var expressSession = require("express-session");
+var cookieParser = require("cookie-parser");
 
 console.log("INFO: NPM Dependencies required Sucessfully.");
 
@@ -17,12 +29,10 @@ console.log("INFO: NPM Dependencies required Sucessfully.");
 console.log("INFO: Initializing Application Server");
 
 var router = express();
-var server = http.createServer(router);
-var nodeSession = new NodeSession(
-{
-	secret: "myNudes",
-	'files': process.cwd() + '/.sessions',
-});
+
+router.use(cookieParser());
+router.use(expressSession({secret:secret()}));
+
 
 console.log("INFO: Application server initialized sucessfully");
 
@@ -34,13 +44,8 @@ console.log("INFO: Applying configurations to application server.");
 
 router.use(express.static(path.resolve(__dirname, 'client/')));
 router.use(bodyParser.json());
-router.use(function (req, res, next){
-	nodeSession.startSession(req, res, function ()
-	{
-		req.session.flush();
-		next();
-	});
-});
+
+
 
 console.log("INFO: configurations applied");
 
@@ -77,7 +82,9 @@ var config = json.readFile("config.json");
 console.log("INFO: configurations file sucessfully readed.");
 
 
-//Inicialização do WebServer========================================
+//Inicialização do Wapp.use(cookieParser());
+
+router.use(expressSession({secret:'somesecrettokenhere'}));
 
 console.log("INFO: Setup of environment variables.");
 
@@ -88,9 +95,9 @@ process.env.SESSION = config.session;
 console.log("INFO: Setup ok.");
 
 console.log("INFO: Starting Server");
-server.listen(process.env.PORT, function()
+router.listen(process.env.PORT, function()
 {
-    console.log("INFO: Server Started Listening at: " + "http://"+server.address().address + ":" + process.env.PORT);
+    console.log("INFO: Server started at http://localhost:"+process.env.PORT);
 });
 
 ///==================================================================

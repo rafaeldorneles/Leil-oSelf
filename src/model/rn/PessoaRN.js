@@ -1,26 +1,23 @@
 var method = PessoaRN.prototype;
 var ErrorGenerator = require("./../../util/ErrorGenerator");
 var isValidDate = require("./../../util/isValidDate");
-var SessionValidator = require("./../../util/SessionManager");
+var SessionManager = require("./../../util/SessionManager");
 
 this.errorGenerator;
-this.sessionManager;
  
- function PessoaRN(){
+ function PessoaRN()
+ {
     this.errorGenerator = new ErrorGenerator();
-    this.sessionManager = new SessionValidator();
  }
  
  method.cadastrar = function (pessoa, dao,callback)
  {
-     if (isNull(pessoa, callback, this.errorGenerator))
-        return;
+	 if (isNull(pessoa, callback, this.errorGenerator))
+		 return;
 
-    if (!isNumber(pessoa, callback, this.errorGenerator))
-        return;
+	 if (!isNumber(pessoa, callback, this.errorGenerator))
+		 return;
 
-//    if (!isDate(pessoa, callback, this.errorGenerator))
-//        return;
     
     dao.cadastrar(pessoa, function (err, dbResponse)
     {
@@ -49,15 +46,24 @@ this.sessionManager;
 
 };
 
-method.login = function (dao, pessoa, callback)
+method.login = function (session, dao, pessoa, callback)
 {
-    dao.login(pessoa.username,pessoa.senha, function (err, lista)
+    dao.login(pessoa.username,pessoa.senha, function (err, pessoa)
     {
+		var sessionManager = new SessionManager();
+		sessionManager.logar(session, pessoa);
+
         if (callback)
-            callback(err, lista);
-        else
-        if (err)
-            throw err;
+		{
+			if(pessoa)
+				callback(err, true);
+			else
+				callback(err, false);
+		}
+        else {
+            if (err)
+                throw err;
+        }
     });
     
 };

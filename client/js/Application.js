@@ -57,7 +57,7 @@ angular.module('AppModule', ['ngRoute']).config(['$routeProvider', function ($ro
 	})
 	.when('/login', {
 		templateUrl: 'views/logon/login.html',
-		controller: 'AvaliacaoController'
+		controller: 'PessoaController'
 	})
 	.when('/404', {
 		templateUrl: 'views/404.html'
@@ -78,26 +78,34 @@ angular.module('AppModule', ['ngRoute']).config(['$routeProvider', function ($ro
 			timeout: 10000,
 			responseType: "json",
 			url: "/pessoas/isLogged/",
-			cache: true
+			cache: false
 		};
 
 		$http(config).then(sucessHandler, errorHandler);
 
 		function sucessHandler(response)
 		{
-			if(response.data.user != null)
-				retorno = true;
+			if(response.data.user) {
+				console.log("nao nulo");
+				$rootScope.showMenu = true;
+			}
+			else {
+				console.log("nulo");
+				$rootScope.showMenu = false;
+			}
 		}
 
 		function errorHandler(response)
 		{
-
+			console.log("erro");
+			$rootScope.showMenu = false;
 		}
 
 		return retorno;
 	};
 
-	$rootScope.showMenu = $rootScope.isLogged();
+	$rootScope.isLogged();
+
 });
 
 

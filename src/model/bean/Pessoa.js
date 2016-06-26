@@ -142,7 +142,7 @@ method.getTelefones = function()
 
 method.popularPessoa= function (pessoa)
 {
-    this.setId(pessoa._id);
+    this.setId(pessoa.id);
     this.setNome(pessoa.nome);
     this.setSobrenome(pessoa.sobrenome);
     this.setDataNascimento(pessoa.dataNascimento);

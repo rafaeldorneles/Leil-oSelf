@@ -115,9 +115,14 @@ method.buscar = function (id, callback)
          conn.buscar("Pessoa",db,function(err,pessoas)
          {
             var pessoa = new Pessoa();
-            pessoa.popularPessoa(pessoas[0]);
+
+			 if(pessoas[0])
+            	pessoa.popularPessoa(pessoas[0]);
+			 else
+				 pessoa = null;
+
              if(callback)
-                 callback(err, pessoas);
+                 callback(err, pessoa);
              else
              {
                  if(err)
