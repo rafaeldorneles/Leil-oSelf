@@ -112,31 +112,13 @@ app.controller('LeilaoController', function ($scope, $http, $rootScope)
         $http(config).then(sucessHandler, errorHandler);
     }
 
-    $scope.setInfo = function (leilao)
-    {
-        $scope.informacoes = true;
-        
-    	function sucessHandler(response)
-		{
-			console.log(response);
-			alert(response.data.message);
-		}
-    	
-		var config =
-		{
-			method: "POST",
-			timeout: 10000,
-			responseType: "json",
-			url: "/leiloes",
-			cache: true,
-			data: leilao
-		};
 
-		$http(config).then(sucessHandler, errorHandler);
-		
+	$scope.setInfo = function(leilao)
+	{
+		$scope.informacoes = true;
+		$scope.leilao = angular.copy(leilao)
 	};
 	
-
 	$scope.encerrar = function (id)
 	{
 		function  sucessHandler()
