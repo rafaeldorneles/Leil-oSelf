@@ -83,6 +83,10 @@ method.setTelefones = function(telefones)
 
 //==================================GETTERS======================
 
+method.getId = function()
+{
+	return this.id;
+}
 method.getNome = function()
 {
 	return this.nome;

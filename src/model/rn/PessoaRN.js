@@ -102,12 +102,11 @@ method.editar = function (pessoa, dao, callback)
     if (isNull(pessoa, callback, this.errorGenerator))
         return;
 
-    if (hasLance(pessoa, callback, this.errorGenerator))
-        return;
+    
     if (!isNumber(pessoa, callback, this.errorGenerator))
         return;
-    if (!isDate(pessoa, callback, this.errorGenerator))
-        return;
+    //if (!isDate(pessoa, callback, this.errorGenerator))
+      //  return;
    
    dao.editar(pessoa, function (err, dbResponse)
     {
@@ -130,13 +129,6 @@ function isNumber(pessoa, callback, errorGenerator)
         return false;
     }
 
-    
-
-//    if (isNaN(pessoa.getRanking()))
-//    {
-//        errorGenerator.getNumberFieldError("ranking", callback);
-//        return false;
-//    }
     if (isNaN(pessoa.getTelefones()))
     {
         errorGenerator.getNumberFieldError("telefones", callback);
@@ -155,17 +147,6 @@ function isNull(pessoa, callback, errorGenerator)
         return true;
     }
 
-//    if (pessoa.getSobrenome() == null)
-//    {
-//        errorGenerator.getNullFieldError("sobrenome", callback);
-//        return true;
-//    }
-
-//    if (pessoa.getDataNascimento() == null)
-//    {
-//        errorGenerator.getNullFieldError("dataNascimento", callback);
-//        return true;
-//    }
 
     if (pessoa.getUsername() == null)
     {

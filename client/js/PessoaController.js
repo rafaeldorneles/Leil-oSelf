@@ -1,6 +1,5 @@
 
 var app = angular.module('AppModule');
-
 app.controller('PessoaController', function($scope, $http, $rootScope)
 {
     $scope.cadastrar = function(pessoa)
@@ -61,31 +60,29 @@ app.controller('PessoaController', function($scope, $http, $rootScope)
 		
 	};
         
-    $scope.listar = function()
+    $scope.buscar = function(pessoa)
     {
-		
+        
         function sucessHandler(response)
         {
-            $scope.lista = response.data.lista;
-
-             $scope.lista.delete = function(pessoa)
+            
+            $scope.busca = response.data.pessoa;
+            $scope.busca.delete = function (pessoa)
             {
-                for(var i = 0; i < this.length; i++)
+                for (var i = 0; i < this.length; i++)
                 {
-                        if(this[i].id == pessoa.id)
-                                delete this[i];
+                    if (this[i].id == pessoa.id)
+                        delete this[i];
                 }
             };
-
-            $scope.lista.replace = function(pessoa)
+            $scope.busca.replace = function (pessoa)
             {
-                for(var i = 0; i < this.length; i++)
+                for (var i = 0; i < this.length; i++)
                 {
-                    if(this[i].id == pessoa.id)
+                    if (this[i].id == pessoa.id)
                         this[i] = pessoa;
                 }
             };
-
         }
 
         var config = 
@@ -93,20 +90,24 @@ app.controller('PessoaController', function($scope, $http, $rootScope)
                 method: "GET",
                 timeout: 10000,
                 responseType: "json",
-                url: "/pessoas",
+                url: "/pessoas/1234",
                 cache: false
+                
         };
 
         $http(config).then(sucessHandler, errorHandler);
 
     };
     
-    $scope.deletar = function(pessoa, lista)
+    $scope.excluir = function(pessoa)
     {
 
         function sucessHandler(response)
         {
-            lista.delete(pessoa);
+            $scope.busca.delete(pessoa);
+            alert("Excluido com sucesso");
+            $rootScope.showMenu = false;
+            window.location.assign("http://localhost:3000/#/login");
         }
 
         var config = 
@@ -124,13 +125,12 @@ app.controller('PessoaController', function($scope, $http, $rootScope)
 	
     $scope.editar = function(pessoa)
     {
+        
         function sucessHandler(response)
         {
-            $scope.lista.replace(pessoa);
+            $scope.busca.replace(pessoa);
             alert(response.data.message);
         }
-
-
         var config = 
         {
             method: "PUT",

@@ -113,8 +113,11 @@ module.exports = function (router)
         var pessoa = new Pessoa();
         var id = request.params.id;
         
+        var sessionManager = new SessionManager();
         
-        pessoa.setId(id);
+        pessoa.popularPessoa(request.session.user);
+        
+        pessoa.setId(pessoa.id);
         
 
         rn.buscar(dao, pessoa, function (err, pessoa)
@@ -139,7 +142,6 @@ module.exports = function (router)
         var data = request.body;
         var id = request.params.id;
         var errorGenerator = new ErrorGenerator();
-
         //Popula Bean do leilão para validação e persistência
         pessoa.popularPessoa(data);
 
@@ -156,6 +158,7 @@ module.exports = function (router)
         {
             if (err)
             {
+                
                 errorHandler(err, response, 304);
             } else
             {
