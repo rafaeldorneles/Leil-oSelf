@@ -174,7 +174,7 @@ app.controller('PessoaController', function($scope, $http, $rootScope)
             console.log(response);
             alert("Bem-vindo!");
             $rootScope.showMenu = true;
-            window.location.assign("http://localhost:3000/#/");
+            window.location.assign("#/");
             
         }
 

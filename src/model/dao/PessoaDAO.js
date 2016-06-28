@@ -14,10 +14,15 @@ method.cadastrar = function (pessoa, callback)
     var conn = this.conn;
     conn.conectar(function (err, db)
     {
-        if (err)
+        if(err)
         {
-            errorHandler(err, callback);
-            return;
+            if(callback)
+            {
+                callback(err);
+                return;
+            }
+            else
+                throw err;
         }
 
         conn.cadastrar(pessoa, db, function (err, insertedId)
@@ -26,7 +31,7 @@ method.cadastrar = function (pessoa, callback)
             conn.editar(pessoa, db, function (err, result)
             {
                 if (callback)
-                callback(err, insertedId);
+                    callback(err, insertedId);
                 else
                 {
                     if (err)
@@ -44,10 +49,15 @@ method.listar = function (callback)
     var conn = this.conn;
     conn.conectar(function (err, db)
     {
-        if (err)
+        if(err)
         {
-            errorHandler(err, callback);
-            return;
+            if(callback)
+            {
+                callback(err);
+                return;
+            }
+            else
+                throw err;
         }
 
         conn.buscar("Pessoa", db, function (err, pessoas)
@@ -77,10 +87,15 @@ method.buscar = function (id, callback)
     var conn = this.conn;
     conn.conectar(function (err, db)
     {
-        if (err)
+        if(err)
         {
-            errorHandler(err, callback);
-            return;
+            if(callback)
+            {
+                callback(err);
+                return;
+            }
+            else
+                throw err;
         }
 
         conn.buscarPorId("Pessoa", db, function (err, pessoas)
@@ -108,10 +123,16 @@ method.buscar = function (id, callback)
      conn.conectar(function(err, db)
      {
          if(err)
-         {
-             errorHandler(err, callback);
-             return;
-         }
+        {
+            if(callback)
+            {
+                callback(err);
+                return;
+            }
+            else
+                throw err;
+        }
+        
          conn.buscar("Pessoa",db,function(err,pessoas)
          {
             var pessoa = new Pessoa();
@@ -140,8 +161,13 @@ method.editar = function (pessoa, callback)
     {
         if(err)
         {
-            errorHandler(err, callback);
-            return;
+            if(callback)
+            {
+                callback(err);
+                return;
+            }
+            else
+                throw err;
         }
         
         conn.editar(pessoa, db, function (err, result)
@@ -166,8 +192,13 @@ method.deletar = function (pessoa, callback)
     {
         if(err)
         {
-            errorHandler(err, callback);
-            return;
+            if(callback)
+            {
+                callback(err);
+                return;
+            }
+            else
+                throw err;
         }
         
         conn.deletar("Pessoa", db, function (err, results)
