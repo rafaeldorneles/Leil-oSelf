@@ -28,13 +28,21 @@
         <form role="form" method="POST">
             <div class="form-group">
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6t text-center">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6t text-center" ng-init="listarAvaliados();">
                         <label for="nota">
                            Avaliação do Usuario
                         </label>
                         <select ng-model="avaliacao.nota" class="form-control" id="nota">
                             <option ng-repeat="cat in opNota" value="{{cat.value}}">{{cat.text}}</option>
                         </select>
+                        <label for="avaliado">
+                            Usuario Avaliado
+                            
+                        </label>
+                        <select ng-model="avaliacao.avaliado" class="form-control" id="nota">
+                            <option ng-repeat="nome in listaAvaliados" value="{{nome}}">{{nome.nome}}</option>
+                        </select>
+                        
                     </div>
                 </div>
             </div>     

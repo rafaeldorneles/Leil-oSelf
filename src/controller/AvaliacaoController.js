@@ -8,14 +8,13 @@ var errorHandler = require("./../util/errorHandler");
 module.exports = function (router)
 {
     //Método de Cadastro
-    router.post('/avaliacoes', function (request, response)
+    router.post('/avaliacao', function (request, response)
     {
         //Declaração de objetos e recepção de dados do request
         var rn = new AvaliacaoRN();
         var dao = new AvaliacaoDAO();
         var avaliacao = new Avaliacao();
         var data = request.body;
-
         //Popula Bean do leilão para validação e persistência
         avaliacao.popularAvaliacao(data);
 

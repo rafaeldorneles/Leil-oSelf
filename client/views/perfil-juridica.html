@@ -9,7 +9,7 @@
     <div class="row">
         <form role="form" method="POST">
             <div class="form-group">
-                <div class="row">
+                <div class="row" ng-init="buscar();">
                     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                         <label for="pessoa">
                             Fisico / Júridico <br>
@@ -23,7 +23,7 @@
                         <label for="nome">
                             Nome da Empresa
                         </label>
-                        <input  type="text"  ng-model="perfil_pessoa.nome" class="form-control" id="pessoa_nome" />
+                        <input  type="text"  ng-model="busca.nome" class="form-control" id="pessoa_nome" />
                     </div>
                 </div>
             </div>
@@ -34,104 +34,35 @@
                         <label for="username">
                             Username
                         </label>
-                        <input type="text" ng-model="perfil_pessoa.username" class="form-control" id="username"/>
+                        <input type="text" ng-model="busca.username" class="form-control" id="username"/>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                         <label for="cnpj">
                             CNPJ
                         </label>
-                        <input type="text" ng-model="perfil_pessoa.cnpj" class="form-control" id="cnpj"/>
+                        <input type="text" ng-model="busca.cnpj" class="form-control" id="cnpj"/>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                         <label for="fundacao">
                             Data de Fundação
                         </label>
-                        <input type="text" ng-model="perfil_pessoa.fundacao" class="form-control" id="fundacao"/>
+                        <input type="text" ng-model="busca.dataNascimento" class="form-control" id="fundacao"/>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                         <label for="telefone">
                             Telefone
                         </label>
-                        <input type="text" ng-model="perfil_pessoa.telefone" class="form-control" id="telefone"/>
+                        <input type="text" ng-model="busca.telefones" class="form-control" id="telefone"/>
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                        <label for="endreco">
-                            Endereço
-                        </label>
-                        <input type="text" ng-model="perfil_pessoa.endereco" class="form-control" id="endereco"/>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                        <label for="numero">
-                            Número
-                        </label>
-                        <input type="text" ng-model="perfil_pessoa.numero" class="form-control" id="numero"/>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                        <label for="complemento">
-                            Complemento
-                        </label>
-                        <input type="text" ng-model="perfil_pessoa.complemento" class="form-control" id="complemento"/>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                        <label for="cep">
-                            CEP
-                        </label>
-                        <input type="text" ng-model="perfil_pessoa.cep" class="form-control" id="cep"/>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                        <label for="bairro">
-                            Bairro
-                        </label>
-                        <input type="text" ng-model="perfil_pessoa.bairro" class="form-control" id="bairro" />
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                        <label for="cidade">
-                            Cidade
-                        </label>
-                        <input type="text" ng-model="perfil_pessoa.cidade" class="form-control" id="cidade" />
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                        <label for="estado">
-                            Estado
-                        </label>
-                        <input type="text" ng-model="perfil_pessoa.estado" class="form-control" id="estado" />
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                        <label for="referencia">
-                            Ponto de Referência
-                        </label>
-                        <input type="text" ng-model="perfil_pessoa.referencia" class="form-control" id="referencia" />
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <label for="infoadi">
-                            Informções Adcionais
-                        </label>
-                        <textarea ng-model="perfil_pessoa.infoadi" class="form-control" rows="5" id="infoadi"></textarea>
-                    </div>
-                </div>
-            </div>
-        </form>
-
+            
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <button type="button" ng-click="excluir(value.id)" class="btn btn-sm btn-danger" alt="Excluir" title="Excluir">
+                <button type="button" ng-click="excluir(busca)" class="btn btn-sm btn-danger" alt="Excluir" title="Excluir">
                     <span class="glyphicon glyphicon-remove"></span> Excluir
                 </button>
-                <button type="button" ng-click="editar(value)" class="btn btn-sm btn-default" alt="Editar" title="Editar">
+                <button type="button" ng-click="editar(busca)" class="btn btn-sm btn-default" alt="Editar" title="Editar">
                     <span class="glyphicon glyphicon-edit"></span> Editar
                 </button>
             </div>

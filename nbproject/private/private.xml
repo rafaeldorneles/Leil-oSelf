@@ -4,10 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Eduardo/Documents/NetBeansProjects/LeilaoServicos/client/views/perfil.html</file>
-            <file>file:/C:/Users/Eduardo/Documents/NetBeansProjects/LeilaoServicos/src/model/rn/PessoaRN.js</file>
-            <file>file:/C:/Users/Eduardo/Documents/NetBeansProjects/LeilaoServicos/client/js/PessoaController.js</file>
-            <file>file:/C:/Users/Eduardo/Documents/NetBeansProjects/LeilaoServicos/src/util/ErrorGenerator.js</file>
-            <file>file:/C:/Users/Eduardo/Documents/NetBeansProjects/LeilaoServicos/src/interceptor/AuthenticationInterceptor.js</file>
+            <file>file:/C:/Users/Eduardo/Documents/NetBeansProjects/LeilaoServicos/src/controller/PessoaController.js</file>
+            <file>file:/C:/Users/Eduardo/Documents/NetBeansProjects/LeilaoServicos/client/views/perfil-juridica.html</file>
+            <file>file:/C:/Users/Eduardo/Documents/NetBeansProjects/LeilaoServicos/src/util/SessionManager.js</file>
         </group>
     </open-files>
 </project-private>

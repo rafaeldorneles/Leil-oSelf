@@ -4,11 +4,7 @@ app.controller('PessoaController', function($scope, $http, $rootScope)
 {
     $scope.cadastrar = function(pessoa)
     {
-           console.log("entrou cadastrar");
-        console.log(pessoa);
-            console.log("entrou cadastrar");
-        console.log(pessoa);
-       
+                  
          if(pessoa.senha != pessoa.confirmaSenha) {
              
         alert("Error: Senhas não conferem!");

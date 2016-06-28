@@ -9,7 +9,7 @@ app.controller('AvaliacaoController', function ($scope, $http)
 
         function sucessHandler(response)
         {
-            console.log(response);
+            alert("Avaliação Concluida");
         }
         
         console.log(avaliacao);
@@ -25,6 +25,28 @@ app.controller('AvaliacaoController', function ($scope, $http)
 
         $http(config).then(sucessHandler, errorHandler);
     };
+    
+    $scope.listarAvaliados = function ()
+    {
+
+        function sucessHandler(response)
+        {
+            $scope.listaAvaliados = response.data.lista;
+            console.log(response.data.lista);
+        }
+
+        var config =
+                {
+                    method: "GET",
+                    timeout: 10000,
+                    responseType: "json",
+                    url: "/pessoas",
+                    cache: false
+                };
+
+        $http(config).then(sucessHandler, errorHandler);
+
+    }
 
     $scope.opNota = [
         {value: 1, text: "Ruim", var: nota=5}, 
@@ -33,6 +55,7 @@ app.controller('AvaliacaoController', function ($scope, $http)
         {value: 4, text: "Muito Bom",var: nota=18},
         {value: 5, text: "Excelente",var: nota=24}
     ];
+    
     
     function errorHandler(response)
     {

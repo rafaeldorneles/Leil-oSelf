@@ -15,14 +15,15 @@ angular.module('AppModule', ['ngRoute', "ngMask"]).config(['$routeProvider', fun
 		templateUrl: 'views/perfil-juridica-novo.html',
 		controller: 'PessoaController'
 	})
+        .when('/perfil-juridica', {
+		templateUrl: 'views/perfil-juridica.html',
+		controller: 'PessoaController'
+	})
 	.when('/leiloes-leiloes', {
 		templateUrl: 'views/leiloes-leiloes.html',
 		controller: 'LeilaoController'
 	})
-	.when('/perfil-juridica-novo', {
-		templateUrl: 'views/perfil-juridica-novo.html',
-		controller: 'LeilaoController'
-	})
+	
 	.when('/perfil-cadastroServico', {
 		templateUrl: 'views/perfil-cadastroServico.html',
 		controller: 'LeilaoController'
