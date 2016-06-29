@@ -21,7 +21,8 @@ app.controller('LanceController', function ($scope, $http)
 
         function sucessHandler(response)
         {
-            console.log(response);
+            console.log("emrie");
+            window.location.href = "#/";
             //alert(response.data.message);
 
         }
@@ -36,7 +37,6 @@ app.controller('LanceController', function ($scope, $http)
                     cache: true,
                     data: lance
                 };
-        window.location.href = "/leiloes-meusLances";                
         $http(config).then(sucessHandler, errorHandler);
     };
 
@@ -89,6 +89,8 @@ app.controller('LanceController', function ($scope, $http)
         function sucessHandler(response)
         {
             lista.delete(lance);
+            alert("Lance excluido com sucesso!");
+            window.location.reload();
         }
 
         var config =

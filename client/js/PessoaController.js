@@ -18,6 +18,12 @@ app.controller('PessoaController', function($scope, $http, $rootScope)
             alert(response.data.message);
             location.href = "#/"
         }
+        
+         function errorHandler(response)
+        {
+            alert("erro ao carregar informações!");
+            console.log(response);
+        }
 
         var config =
         {
@@ -80,6 +86,12 @@ app.controller('PessoaController', function($scope, $http, $rootScope)
                 }
             };
         }
+        
+         function errorHandler(response)
+        {
+            alert("erro ao carregar informações!");
+            console.log(response);
+        }
 
         var config = 
         {
@@ -104,6 +116,12 @@ app.controller('PessoaController', function($scope, $http, $rootScope)
             alert("Excluido com sucesso");
             $rootScope.showMenu = false;
             window.location.assign("http://localhost:3000/#/login");
+        }
+        
+         function errorHandler(response)
+        {
+            alert("erro ao carregar informações!");
+            console.log(response);
         }
 
         var config = 
@@ -168,11 +186,8 @@ app.controller('PessoaController', function($scope, $http, $rootScope)
         
     $scope.login = function(pessoa)
     {
-        console.log(pessoa);
         function sucessHandler(response)
         {
-            console.log(response);
-            alert("Bem-vindo!");
             $rootScope.showMenu = true;
             window.location.assign("#/");
             
@@ -180,10 +195,8 @@ app.controller('PessoaController', function($scope, $http, $rootScope)
 
         function errorHandler(response)
         {
-            console.log(response);
             alert("Login ou Senha, incorreto!");
             $rootScope.showMenu = false;
-            window.location.assign("#/");
         }
 
         var config = 

@@ -2,7 +2,7 @@
 <!-- Cabeçalho da Janela -->
 <div class="row" id="cabPag">
     <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12">
-        <h1 style="text-align: center">Cadastro de Pessoa Física</h1>
+        <h1 style="text-align: center">Perfil Novo</h1>
     </div>
 </div>
 
@@ -12,16 +12,7 @@
         <form role="form" method="POST">
             <div class="form-group">
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                        <label for="pessoa">
-                            Pessoa <br>
-                        </label>
-                        <div>
-                            <input type="radio" name="op" id="op1" checked onclick="location.href = '#/perfil-novo'"> Física
-                            <input type="radio" name="op" id="op2" onclick="location.href = '#/perfil-juridica-novo'"> Jurídica
-                        </div>
-                    </div>
-                    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <label for="nome">
                             Nome
                         </label>
@@ -63,20 +54,20 @@
 
             <div class="form-group">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <label for="username">
                             Username
                         </label>
                         <input type="text" ng-model="pessoa.username" class="form-control" id="username" placeholder="Ex. Nunes"/>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <label for="senha">
                             Senha
                         </label>
                         <input type="password" ng-model="pessoa.senha" class="form-control" id="senha"/>
                     </div>
                      <div class="row">
-                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class=" col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <label for="end_rua">
                             Confirmação senha
                         </label>

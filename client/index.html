@@ -32,13 +32,17 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                          </div>
-                    <div>                        <a href="#/"><img src="img/logo-cabecalho.svg" id="logoCab"></a>
+                    <div>
+                        
+                        <a href="#/"><img src="img/logo-cabecalho.svg" id="logoCab"></a>
                       
                    
                         
-                        <a href="#perfil-novo" id="btnTXT"><button type="button" class="btn btn-default ,btn pull-right" ng-hide="showMenu">Cadastrar</button></a>
-                        <a href="#login" id="btnTXT"><button type="button" class="btn btn-primary , btn pull-right" ng-hide="showMenu">Entrar</button></a>
-                        <a id="btnTXT" ng-click="deslogar();"><button type="button" class="btn btn-primary , btn pull-right" ng-hide="!showMenu">Sair</button></a>
+                        <a href="#perfil-novo" ng-hide="showMenu" class="pull-right" id="logon"><img src="img/register.svg" id="menuIcon"> Registrar-se</button></a>
+                        <a href="#login" ng-hide="showMenu" class="pull-right" id="login"><img src="img/login.svg" id="menuIcon"> Entrar </button></a>
+
+
+                        <a ng-click="deslogar();" ng-hide="!showMenu" class="pull-right" id="logout"><img src="img/error.svg" id="menuIcon"> Sair </a>
 
                         </div>
 

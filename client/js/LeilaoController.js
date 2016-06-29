@@ -10,6 +10,7 @@ app.controller('LeilaoController', function ($scope, $http, $rootScope)
         {
             console.log(response);
             alert(response.data.message);
+            window.location.href = "#/";
         }
 
         var config =
@@ -155,8 +156,8 @@ app.controller('LeilaoController', function ($scope, $http, $rootScope)
         function sucessHandler(response)
         {
             console.log(response);
-            window.location.href = window.location.href;
-            //alert(response.data.message);
+            window.location.href = "#/meus-lances";
+            alert("Lance registrado!");
 
         }
         lance.leilao = leilao;
@@ -171,7 +172,6 @@ app.controller('LeilaoController', function ($scope, $http, $rootScope)
                     data: lance
                 };
                 
-        console.log("vou mandar");
 
         $http(config).then(sucessHandler, errorHandler);
     };
