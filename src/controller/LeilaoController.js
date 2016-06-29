@@ -82,6 +82,25 @@ module.exports = function (router)
         });
 
     });
+    
+    router.get("/leiloes/abertos", function(request, response) 
+    {
+        //Declaração de objetos
+        var rn = new LeilaoRN();
+        var dao = new LeilaoDAO();
+
+        //Execução do método que lista
+        rn.listarAbertos(request.session, dao, function (err, lista)
+        {
+            if (err)
+            {
+                errorHandler(err, response);
+            } else
+            {
+                response.status(200).send({lista: lista});
+            }
+        });
+    });
 
     //Método de busca por id
     router.get('/leiloes/:id', function (request, response)

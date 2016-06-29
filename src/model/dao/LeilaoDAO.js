@@ -73,6 +73,58 @@ method.listar = function (callback)
     });
 };
 
+method.listarAbertos = function (userId, callback)
+{
+    var conn = this.conn;
+    var args;
+    
+    if(userId)
+    {
+        args = 
+        {
+            encerrado: false,
+            "dono.id": {"$ne": userId}
+        }
+    }
+    else
+    {
+        args = 
+        {
+            encerrado: false
+        }
+    }
+    
+    
+    conn.conectar(function (err, db)
+    {
+        if (err)
+        {
+            errorHandler(err, callback);
+            return;
+        }
+
+        conn.buscar("Leilao", db, function (err, leiloes)
+        {
+            for (var i = 0; i < leiloes.length; i++)
+            {
+                var l = new Leilao();
+                l.popularLeilao(leiloes[i]);
+                leiloes[i] = l;
+            }
+            
+            if(callback)
+                callback(err, leiloes);
+            else
+            {
+                if(err)
+                    throw err;
+            }
+            
+            db.close();
+        }, args);
+    });
+};
+
 method.buscar = function (id, callback)
 {
     var conn = this.conn;

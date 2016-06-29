@@ -38,10 +38,6 @@
                         </label>
 
                         <input type="text" ng-model="leilao.dataHoraExecucao" class="form-control" data-mask="99/99/9999 99:99:99" id="data_exec" placeholder="Ex.: XX/XX/XXXX XX:XX:XX"/>
-
-
-
-
                     </div>
 
                     <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
@@ -65,78 +61,51 @@
                 </div>
             </div>
 
-            <!--
-            <div class="form-group">
-                <div class="row">
-                    <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <label for="valor_min">
-                            Valor Mínimo
-                        </label>
-                        <input type="text" ng-model="leilao.valor_min" class="form-control" id="valor_min" placeholder="Ex.: $ 00.00"/>
-                    </div>
-                    <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <label for="valor_max">
-                            Valor Máximo
-                        </label>
-                        <input type="text" ng-model="leilao.valor_max" class="form-control" id="valor_max" placeholder="Ex.: $ 00.00"/>
-                    </div>
-                </div>
-            </div>
-            -->
-
             <div class="form-group">
                 <div class="row">
                     <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <label for="end_rua">
-                            Endereço
+                            Logradouro
                         </label>
-                        <input type="text" ng-model="leilao.endereco" class="form-control" id="end_rua" placeholder="Ex.: Rua Exemplo"/>
+                        <input type="text" ng-model="leilao.endereco.logradouro" class="form-control" id="end_rua" placeholder="Ex.: Rua Exemplo"/>
                     </div>
-                    <!--
-                    <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <label for="end_rua">
-                            Rua ou Avenida
+                            Numero
                         </label>
-                        <input type="text" ng-model="leilao.end_rua" class="form-control" id="end_rua" placeholder="Ex.: Rua Exemplo"/>
+                        <input type="text" ng-model="leilao.endereco.numero" class="form-control" id="end_rua" placeholder="Ex.: xxx"/>
                     </div>
-                    <div class=" col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                        <label for="end_nro">
-                            Número
-                        </label>
-                        <input type="text" ng-model="leilao.end_nro" class="form-control" id="end_nro" placeholder="Ex.: 1234"/>
-                    </div>
-                    <div class=" col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                        <label for="end_compl">
+                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label for="end_rua">
                             Complemento
                         </label>
-                        <input type="text" ng-model="leilao.end_compl" class="form-control" id="end_compl" placeholder="Ex.: AP.701"/>
+                        <input type="text" ng-model="leilao.endereco.complemento" class="form-control" id="end_rua" placeholder="Ex.: AP XX"/>
                     </div>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <div class="row">
-                    <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <label for="end_bairro">
-                            Bairro
-                        </label>
-                        <input type="text" ng-model="leilao.end_bairro" class="form-control" id="end_bairo" placeholder="Ex.: Exemplo"/>
-                    </div>
-                    <div class=" col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                        <label for="end_cidade">
+                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label for="end_rua">
                             Cidade
                         </label>
-                        <input type="text" ng-model="leilao.end_cidade" class="form-control" id="end_cidade" placeholder="Ex.: Exemplo"/>
+                        <input type="text" ng-model="leilao.endereco.cidade" class="form-control" id="end_rua" placeholder="Ex.: São Paulo"/>
                     </div>
-                    <div class=" col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                        <label for="end_uf">
-                            Estado
+                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label for="end_rua">
+                            UF
                         </label>
-                        <input type="text" ng-model="leilao.end_uf" class="form-control" id="end_uf" placeholder="Ex.: RS"/>
+                        <input type="text" ng-model="leilao.endereco.uf" class="form-control" id="end_rua" placeholder="Ex.: SP"/>
                     </div>
-                </div>
-            </div>-->
-
+                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label for="end_rua">
+                            CEP
+                        </label>
+                        <input type="text" ng-model="leilao.endereco.cep" class="form-control" id="end_rua" placeholder="Ex.: 000.000-00"/>
+                    </div>
+                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label for="end_rua">
+                            Observacao
+                        </label>
+                        <input type="text" ng-model="leilao.endereco.Observacao" class="form-control" id="end_rua" placeholder="Ex.: Deve ter tal coisa"/>
+                    </div>
+                    
                 </div>
             </div>
             <!-- Botões -->

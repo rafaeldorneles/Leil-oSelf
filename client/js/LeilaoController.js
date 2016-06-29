@@ -5,9 +5,6 @@ app.controller('LeilaoController', function ($scope, $http, $rootScope)
 {
     $scope.cadastrar = function (leilao)
     {
-		leilao.dataHoraInicio  = $rootScope.dateTimeConverter(leilao.dataHoraInicio);
-		leilao.dataHoraFinal = $rootScope.dateTimeConverter(leilao.dataHoraFinal);
-		leilao.dataHoraExecucao = $rootScope.dateTimeConverter(leilao.dataHoraExecucao);
 
         function sucessHandler(response)
         {
@@ -62,6 +59,46 @@ app.controller('LeilaoController', function ($scope, $http, $rootScope)
                     timeout: 10000,
                     responseType: "json",
                     url: "/leiloes",
+                    cache: false
+                };
+
+        $http(config).then(sucessHandler, errorHandler);
+
+    }
+    
+    $scope.listarAbertos = function ()
+    {
+
+        function sucessHandler(response)
+        {
+            $scope.lista = response.data.lista;
+
+            $scope.lista.delete = function (leilao)
+            {
+                for (var i = 0; i < this.length; i++)
+                {
+                    if (this[i].id == leilao.id)
+                        delete this[i];
+                }
+            };
+
+            $scope.lista.replace = function (leilao)
+            {
+                for (var i = 0; i < this.length; i++)
+                {
+                    if (this[i].id == leilao.id)
+                        this[i] = leilao;
+                }
+            };
+
+        }
+
+        var config =
+                {
+                    method: "GET",
+                    timeout: 10000,
+                    responseType: "json",
+                    url: "/leiloes/abertos",
                     cache: false
                 };
 

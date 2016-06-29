@@ -11,6 +11,7 @@ function LeilaoRN()
 
 method.cadastrar = function (leilao, dao, usuario,callback)
 {
+    leilao.setEncerrado(false);
     
     if (isNull(leilao, callback, this.errorGenerator))
         return;
@@ -18,8 +19,6 @@ method.cadastrar = function (leilao, dao, usuario,callback)
     if (!isNumber(leilao, callback, this.errorGenerator))
         return;
 
-    if (!isDate(leilao, callback, this.errorGenerator))
-        return;
     
   	leilao.setDono(usuario);
 
@@ -94,6 +93,28 @@ method.buscarPorDono = function (dao, id, callback)
     });
 };
 
+method.listarAbertos = function(session, dao, callback)
+{
+    var SessionManager = require("./../../util/SessionManager");
+    var manager = new SessionManager();
+    var userId;
+    
+    if(manager.isLogged(session))
+    {
+        userId = manager.getUser(session).id;
+    }
+    
+    dao.listarAbertos(userId, function (err, lista)
+	{
+        if (callback)
+            callback(err, lista);
+        else
+        {
+            if (err)
+                throw err;
+        }
+    });
+}
 
 method.deletar = function (leilao, dao, callback)
 {
@@ -169,11 +190,11 @@ function isNumber(leilao, callback, errorGenerator)
         return false;
     }
 
-    if (isNaN(leilao.getEndereco()))
+    /*if (isNaN(leilao.getEndereco()))
     {
         errorGenerator.getNumberFieldError("endereco", callback);
         return false;
-    }
+    }*/
 
     return true;
 }

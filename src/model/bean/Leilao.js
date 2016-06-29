@@ -9,6 +9,9 @@ this.dataHoraInicio;
 this.dataHoraFinal;
 this.dataHoraExecucao;
 this.endereco;
+this.encerrado;
+this.vencedor;
+this.avaliacaoServico;
 
 function Leilao()
 {
@@ -39,23 +42,38 @@ method.setDescricao = function (descricao)
 
 method.setDataHoraInicio = function (dataHoraInicio)
 {
-    this.dataHoraInicio = new Date(dataHoraInicio);
+    this.dataHoraInicio = dataHoraInicio;
 };
 
 method.setDataHoraFinal = function (dataHoraFinal)
 {
-    this.dataHoraFinal = new Date(dataHoraFinal);
+    this.dataHoraFinal = dataHoraFinal;
 };
 
 method.setDataHoraExecucao = function (dataHoraExecucao)
 {
-    this.dataHoraExecucao = new Date(dataHoraExecucao);
+    this.dataHoraExecucao = dataHoraExecucao;
 };
 
 method.setEndereco = function (endereco)
 {
     this.endereco = endereco;
 };
+
+method.setEncerrado = function(encerrado)
+{
+    this.encerrado = encerrado;
+}
+
+method.setVencedor = function(vencedor)
+{
+    this.vencedor = vencedor;
+}
+
+method.setAvaliacaoServico = function(avaliacaoServico)
+{
+    this.avaliacaoServico = avaliacaoServico;
+}
 
 //==================================GETTERS======================
 
@@ -99,6 +117,20 @@ method.getEndereco = function ()
     return this.endereco;
 };
 
+method.getEncerrado = function()
+{
+    return this.encerrado;
+}
+
+method.getVencedor = function()
+{
+    return this.vencedor;
+}
+
+method.getAvaliacaoServico = function()
+{
+    return this.avaliacaoServico;
+}
 //================================OUTROS========================
 
 method.popularLeilao = function (leilao)
@@ -111,6 +143,9 @@ method.popularLeilao = function (leilao)
     this.setDataHoraFinal(leilao.dataHoraFinal);
     this.setDataHoraExecucao(leilao.dataHoraExecucao);
     this.setEndereco(leilao.endereco);
+    this.setEncerrado(leilao.encerrado);
+    this.setVencedor(leilao.vencedor);
+    this.setAvaliacaoServico(leilao.avaliacaoServico);
 };
 
 //==================================EXPORT======================
