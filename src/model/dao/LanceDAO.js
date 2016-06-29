@@ -71,6 +71,7 @@ method.listar = function (callback)
     });
 };
 
+
 method.buscar = function (id, callback)
 {
     var conn = this.conn;
@@ -150,7 +151,7 @@ method.buscarPorInteressado = function (idInteressado, callback)
             for (var i = 0; i < lances.length; i++)
             {
                 var l = new Lance();
-                l.popularLeilao(lances[i]);
+                l.popularLance(lances[i]);
                 lances[i] = l;
             }
             

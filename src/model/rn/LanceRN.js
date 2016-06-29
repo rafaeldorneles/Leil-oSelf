@@ -10,13 +10,18 @@ function LanceRN()
 
 }
 
-method.cadastrar = function (lance, dao, callback)
+method.cadastrar = function (session, lance, dao, callback)
 {
 
+    var SessionManager = require("./../../util/SessionManager");
+    var manager = new SessionManager();
+    
+    lance.setInteressado(manager.getUser(session));
+    lance.setDataHora(new Date());
 
     dao.cadastrar(lance, function (err, insertedId)
     {
-        callback(err, insertedId)
+        callback(err, insertedId);
     });
 
 
@@ -40,13 +45,13 @@ method.getWinner = function (idLeilao, dao, callback)
 
             if (!winner)
             {
-                winner = interessado;
+                winner = lances[i];;
                 bestPoints = points;
             } else
             {
                 if (points > bestPoints)
                 {
-                    winner = interessado;
+                    winner = lances[i];
                     bestPoints = points;
                 }
             }
@@ -67,6 +72,24 @@ method.getWinner = function (idLeilao, dao, callback)
 method.listar = function (dao, callback)
 {
     dao.listar(function (err, lista) {
+        if (callback)
+            callback(err, lista);
+        else
+        {
+            if (err)
+                throw err;
+        }
+    });
+
+};
+
+method.buscarPorInteressado = function (session, dao, callback)
+{
+    var SessionManager = require("./../../util/SessionManager");
+    var manager = new SessionManager();
+    var id = manager.getUser(session);
+    
+    dao.buscarPorInteressado(id, function (err, lista) {
         if (callback)
             callback(err, lista);
         else

@@ -135,7 +135,7 @@ method.getAvaliacaoServico = function()
 
 method.popularLeilao = function (leilao)
 {
-    this.setId(leilao._id);
+    this.setId(leilao.id);
     this.setDono(leilao.dono);
     this.setCategoria(leilao.categoria);
     this.setDescricao(leilao.descricao);

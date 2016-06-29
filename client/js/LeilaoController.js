@@ -148,6 +148,33 @@ app.controller('LeilaoController', function ($scope, $http, $rootScope)
 
         $http(config).then(sucessHandler, errorHandler);
     }
+    
+    $scope.cadastrarLance = function (lance, leilao)
+    {
+
+        function sucessHandler(response)
+        {
+            console.log(response);
+            window.location.href = window.location.href;
+            //alert(response.data.message);
+
+        }
+        lance.leilao = leilao;
+        console.log(lance);
+        var config =
+                {
+                    method: "POST",
+                    timeout: 10000,
+                    responseType: "json",
+                    url: "/lances",
+                    cache: true,
+                    data: lance
+                };
+                
+        console.log("vou mandar");
+
+        $http(config).then(sucessHandler, errorHandler);
+    };
 
 
 	$scope.setInfo = function(leilao)

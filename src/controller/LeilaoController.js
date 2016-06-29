@@ -47,7 +47,7 @@ module.exports = function (router)
 		var dao = new LeilaoDAO();
 		var id = request.params.id;
 
-		rn.encerrar(id, lanceRn, lanceDao, dao, function (err, winner)
+		rn.encerrar(id, lanceRn, lanceDao, dao, function (err, dbResponse)
 		{
 			if(err)
 			{
@@ -55,7 +55,7 @@ module.exports = function (router)
 			}
 			else
 			{
-				response.status(200).send({winner: winner});
+				response.status(200).send();
 			}
 
 		});

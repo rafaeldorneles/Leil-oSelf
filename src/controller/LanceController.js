@@ -19,7 +19,7 @@ module.exports = function (router)
         lance.popularLance(data);
 
         //Monta o escopo onde os dados estarão disponíveis, através de callback e executa o cadastro
-        rn.cadastrar(lance, dao, function (err, dbResponse)
+        rn.cadastrar(request.session, lance, dao, function (err, dbResponse)
         {
 
             if (err)
@@ -43,7 +43,7 @@ module.exports = function (router)
         var dao = new LanceDAO();
 
         //Execução do método que lista
-        rn.listar(dao, function (err, lista)
+        rn.buscarPorInteressado(request.session, dao, function (err, lista)
         {
             if (err)
             {

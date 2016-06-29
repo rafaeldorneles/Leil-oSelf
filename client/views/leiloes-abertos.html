@@ -65,21 +65,21 @@
 
             <div class="form-group">
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <label for="data_exec">
                             Data de Inicio
                         </label>
                         <input type="text" ng-model="leilao.dataHoraInicio" class="form-control" id="data_exec" readonly="true"/>                        
                     </div>
 
-                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <label for="data_exec">
                             Data da Execução
                         </label>
                         <input type="text" ng-model="leilao.dataHoraExecucao" class="form-control" id="data_exec" readonly="true"/>                        
                     </div>
 
-                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <label for="data_limite">
                             Data Limite dos Lances
                         </label>
@@ -103,42 +103,43 @@
 
             <div class="form-group">
                 <div class="row">
-                    <label for="end_rua">
+                    <div class=" col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                        <label for="end_rua">
                             Logradouro
                         </label>
                         <input type="text" ng-model="leilao.endereco.logradouro" class="form-control" id="end_rua" placeholder="Ex.: Rua Exemplo" readonly/>
                     </div>
-                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class=" col-lg-4 col-md-6 col-sm-12 col-xs-12">
                         <label for="end_rua">
                             Numero
                         </label>
                         <input type="text" ng-model="leilao.endereco.numero" class="form-control" id="end_rua" placeholder="Ex.: xxx" readonly/>
                     </div>
-                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class=" col-lg-4 col-md-6 col-sm-12 col-xs-12">
                         <label for="end_rua">
                             Complemento
                         </label>
                         <input type="text" ng-model="leilao.endereco.complemento" class="form-control" id="end_rua" placeholder="Ex.: AP XX" readonly/>
                     </div>
-                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class=" col-lg-2 col-md-2 col-sm-12 col-xs-12">
                         <label for="end_rua">
                             Cidade
                         </label>
                         <input type="text" ng-model="leilao.endereco.cidade" class="form-control" id="end_rua" placeholder="Ex.: São Paulo" readonly/>
                     </div>
-                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class=" col-lg-2 col-md-2 col-sm-12 col-xs-12">
                         <label for="end_rua">
                             UF
                         </label>
                         <input type="text" ng-model="leilao.endereco.uf" class="form-control" id="end_rua" placeholder="Ex.: SP" readonly/>
                     </div>
-                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class=" col-lg-2 col-md-2 col-sm-12 col-xs-12">
                         <label for="end_rua">
                             CEP
                         </label>
                         <input type="text" ng-model="leilao.endereco.cep" class="form-control" id="end_rua" placeholder="Ex.: 000.000-00" readonly/>
                     </div>
-                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class=" col-lg-6 col-md-12 col-sm-12 col-xs-12">
                         <label for="end_rua">
                             Observacao
                         </label>
@@ -155,30 +156,14 @@
             </div>
         </div>
         <div class="row" ng-show="campoLance" >
-            <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-controller="LanceController">
+            <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <form role="form" method="POST">
 
                     <label for="valor_lance">
                         Informe o valor do Lance
                     </label>
                     <input type="text" ng-model="lance.valor" class="form-control" id="valor_lance" placeholder="Ex.: 300,00"/>
-
-                    <label for="interessado_lance">
-                        Interessado
-                    </label>
-                    <input type="text" ng-model="lance.interessado" class="form-control" id="interessado_lance"/>
-
-
-                    <label for="interessado_lance">
-                        Data e Hora do Lance
-                    </label>
-                    <input type="text" ng-model="lance.dataHora" class="form-control" id="interessado_lance"/>
-
                 </form>
-
-
-
-
             </div>
 
             <button type="button" ng-click="removeInfo()" class="btn btn-warning"><span class="glyphicon glyphicon-menu-left"></span> Voltar</button>

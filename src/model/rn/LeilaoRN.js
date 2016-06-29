@@ -50,7 +50,25 @@ method.cadastrar = function (leilao, dao, usuario,callback)
 
 method.encerrar = function (id, lanceRn, lanceDao, dao, callback)
 {
-	lanceRn.getWinner(id, lanceDao, callback);
+	lanceRn.getWinner(id, lanceDao, function(err, winner)
+	{
+	    dao.buscar(id, function(err, leilao)
+	    {
+	        leilao.setVencedor(winner);
+	        leilao.setEncerrado(true);
+	        
+	        dao.editar(leilao, function (err, dbResponse)
+            {
+                if (callback)
+                    callback(err, dbResponse);
+                else
+                {
+                    if (err)
+                        throw err;
+                }
+            });
+	    })
+	});
 };
 
 method.listar = function (dao, callback)

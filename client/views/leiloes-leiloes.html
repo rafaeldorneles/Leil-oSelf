@@ -13,7 +13,6 @@
         </form>		
         <hr>		
     </div>
-<a href="#/avaliacao" id="btnTXT"><img src="img/meus-leiloes.svg" id="menuIcon">  avaliação</a>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
         <table class="table table-striped table-hover" ng-init="listarPorDono()">
@@ -21,9 +20,7 @@
                 <tr>
                     <th>Categoria</th>
                     <th>Descrição</th>
-                    <th>Tempo</th>
                     <th>Status</th>
-                    <th>Lances</th>
                     <th>Ação</th>
                 </tr>
             </thead>
@@ -31,15 +28,13 @@
                 <tr ng-repeat="(key, value) in lista">
                     <td>{{opCategorias.find(value.categoria).text}}</td>
                     <td>{{value.descricao}}</td>
-                    <td>{{value.tempoCorrente}}</td>
-                    <td>{{value.status}}</td>
-                    <td>{{value.lances}}</td>
-
+                    <td ng-show="value.encerrado == false">Aberto</td>
+                    <td ng-show="value.encerrado == true">Encerrado</td>
                     <th>
                         <button type="button" ng-click="setInfo(value)" class="btn btn-sm btn-primary" alt="Editar" title="Editar">
                             <span class="glyphicon glyphicon-plus-sign"></span> Informações
                         </button>
-                        <button type="button" ng-click="encerrar(leilao.id)" class="btn btn-sm btn-primary" alt="Editar" title="Editar">
+                        <button type="button" ng-click="encerrar(value.id)" class="btn btn-sm btn-primary" ng-show="value.encerrado == false" alt="Editar" title="Editar">
                             <span class="glyphicon glyphicon-bell"></span> Encerrar
                         </button>
                     </th>

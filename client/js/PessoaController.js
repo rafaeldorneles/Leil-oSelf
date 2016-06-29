@@ -11,7 +11,7 @@ app.controller('PessoaController', function($scope, $http, $rootScope)
         console.log("senha Errada");
         //pessoa.pwd1.focus();
         return false;
-    }else
+    }else{
         
     	function sucessHandler(response)
         {
@@ -54,7 +54,7 @@ app.controller('PessoaController', function($scope, $http, $rootScope)
 
         $http(config).then(sucessHandler, errorHandler);
 		
-	};
+	}};
         
     $scope.buscar = function(pessoa)
     {
@@ -178,6 +178,14 @@ app.controller('PessoaController', function($scope, $http, $rootScope)
             
         }
 
+        function errorHandler(response)
+        {
+            console.log(response);
+            alert("Login ou Senha, incorreto!");
+            $rootScope.showMenu = false;
+            window.location.assign("#/");
+        }
+
         var config = 
         {
             method: "POST",
@@ -191,11 +199,6 @@ app.controller('PessoaController', function($scope, $http, $rootScope)
         $http(config).then(sucessHandler, errorHandler);
     };
 
-    function errorHandler(response)
-    {
-        console.log(response);
-        //alert(response.data.errorMessage);
-    }
 
 });
 	

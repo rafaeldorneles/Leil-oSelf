@@ -36,7 +36,7 @@ app.controller('LanceController', function ($scope, $http)
                     cache: true,
                     data: lance
                 };
-
+        window.location.href = "/leiloes-meusLances";                
         $http(config).then(sucessHandler, errorHandler);
     };
 
