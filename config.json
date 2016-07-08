@@ -8,6 +8,6 @@
         "port": "27017"
     },
     "environment": "development",
-    "port" : 8080,
-    "session": true
+    "port" : 3000,
+    "session": false
 }

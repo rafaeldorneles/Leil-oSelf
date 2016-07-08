@@ -283,7 +283,7 @@ app.controller('LeilaoController', function ($scope, $http, $rootScope)
                 {value: 3, text: "Serviços de Informática"},
                 {value: 4, text: "Serviços de Manufatura"},
                 {value: 5, text: "Serviços de Instação de ar condicionado"},
-                {value: 666, text: "Serviços de Satanistas"},
+                {value: 6, text: "Serviços Contabeis"},
                 {value: 5555, text: "Serviços de Diversos (Outros)"}
             ];
 
