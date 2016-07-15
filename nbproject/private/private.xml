@@ -2,11 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Eduardo/Documents/NetBeansProjects/LeilaoServicos/client/views/perfil.html</file>
-            <file>file:/C:/Users/Eduardo/Documents/NetBeansProjects/LeilaoServicos/src/controller/PessoaController.js</file>
-            <file>file:/C:/Users/Eduardo/Documents/NetBeansProjects/LeilaoServicos/client/views/perfil-juridica.html</file>
-            <file>file:/C:/Users/Eduardo/Documents/NetBeansProjects/LeilaoServicos/src/util/SessionManager.js</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

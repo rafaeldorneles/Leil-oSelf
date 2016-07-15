@@ -41,9 +41,16 @@
                         <a href="#perfil-novo" ng-hide="showMenu" class="pull-right" id="logon"><img src="img/register.svg" id="menuIcon"> Registrar-se</button></a>
                         <a href="#login" ng-hide="showMenu" class="pull-right" id="login"><img src="img/login.svg" id="menuIcon"> Entrar </button></a>
 
-
+                       
                         <a ng-click="deslogar();" ng-hide="!showMenu" class="pull-right" id="logout"><img src="img/error.svg" id="menuIcon"> Sair </a>
-
+                        <a class"pull-right">
+                            
+                        </a>
+                         <a href="#/leilao-novo" class="pull-right" ng-hide="!showMenu"  id="btnTXT"><img src="img/new-file.svg" id="menuIcon">  Leilão Novo</a>
+                    
+                        
+                           
+                     
                         </div>
 
                         
@@ -66,11 +73,13 @@
                         <a class="btn btn-default"><span class="glyphicon glyphicon-menu-hamburger"></span> MENU</a>
                     </button>
                 </div>
+                
                 <nav class="navbar-collapse collapse">
                     <ul class="nav nav-justified">
-                    <li>
+                  <!--  <li>
                         <a href="#/" id="btnTXT"  ><img src="img/home.svg" id="menuIcon">  Home</a>
                     </li>
+                  -->
                     <li ng-hide="!showMenu">
                         <a href="#/perfil" id="btnTXT"><img src="img/user.svg" id="menuIcon">  Perfil</a>
                     </li>
@@ -83,9 +92,7 @@
                     <li>
                         <a href="#/leiloes-abertos" id="btnTXT"><img src="img/leiloes-abertos.svg" id="menuIcon">  Leilões Abertos</a>
                     </li>
-                    <li ng-hide="!showMenu">
-                        <a href="#/leilao-novo" id="btnTXT"><img src="img/new-file.svg" id="menuIcon">  Leilão Novo</a>
-                    </li>
+                  
                     <li>
                         <a href="#/sobre" id="btnTXT"><img src="img/info.svg" id="menuIcon">  Sobre</a>
                     </li>
