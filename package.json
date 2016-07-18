@@ -4,18 +4,7 @@
   "description": "Web service to interact with interface for services auction.",
   "main": "App.js",
   "constributors": [
-    {
-      "name": "Allisson",
-      "email": "alndedigo@gmail.com"
-    },
-    {
-      "name": "Eduardo",
-      "email": "eduardosouza.developer@gmail.com"
-    },
-    {
-      "name": "Gabriel Schaidhauer",
-      "email": "gabriel.schaidhauer@gmail.com"
-    },
+  
     {
       "name": "Rafael",
       "email": "rafael.bke@gmail.com"
@@ -23,10 +12,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/gabrielSchaidhauer/LeilaoServicos"
+    "url": "https://github.com/rafaeldorneles/Leil-oSelf"
   },
-  "bugs": {
-    "email": "gabriel.schaidhauer@gmail.com"
+  "bugs": {    
+    "email": "rafael.bke@gmail.com"
   },
   "dependencies": {
     "body-parser": "1.15.*",

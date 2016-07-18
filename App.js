@@ -21,6 +21,9 @@ var cookieParser = require("cookie-parser");
 
 console.log("INFO: NPM Dependencies required Sucessfully.");
 
+//inicialização mongo para testes local
+//
+var oExec = WshShell.Exec("c:\Program Files\MongoDB\Server\3.2\bin\mongod.exe");
 //==================================================================
 
 
@@ -82,6 +85,7 @@ var config = json.readFile("config.json");
 console.log("INFO: configurations file sucessfully readed.");
 
 
+
 //Inicialização do Wapp.use(cookieParser());
 
 router.use(expressSession({secret:'somesecrettokenhere'}));
@@ -99,5 +103,6 @@ router.listen(process.env.PORT, function()
 {
     console.log("INFO: Server started at http://localhost:"+process.env.PORT);
 });
+
 
 ///==================================================================
