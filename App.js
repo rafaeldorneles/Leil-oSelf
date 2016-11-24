@@ -21,10 +21,7 @@ var cookieParser = require("cookie-parser");
 
 console.log("INFO: NPM Dependencies required Sucessfully.");
 
-//inicialização mongo para testes local
-//
-var oExec = WshShell.Exec("c:\Program Files\MongoDB\Server\3.2\bin\mongod.exe");
-//==================================================================
+
 
 
 //Inicialização de objetos==========================================

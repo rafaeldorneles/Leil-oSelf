@@ -190,6 +190,8 @@ app.controller('PessoaController', function($scope, $http, $rootScope)
         {
             $rootScope.showMenu = true;
             window.location.assign("#/");
+            alert("Login com sucesso");
+            
             
         }
 

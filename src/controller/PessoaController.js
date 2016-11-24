@@ -28,7 +28,7 @@ module.exports = function (router)
             } else
             {
                 response.location("http://" + request.hostname + "/pessoas/" + dbResponse);
-                response.status(201).send({message: "Pessoa cadastrado com sucesso!"});
+                response.status(201).send({message: "Cadastrado com sucesso!"});
             }
         });
 
