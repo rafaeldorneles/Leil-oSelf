@@ -277,12 +277,12 @@ app.controller('LeilaoController', function ($scope, $http, $rootScope)
     };
 
     $scope.opCategorias =
-    [                {value: 1, text: "Adestramento de animais"},
+    [           {value: 1, text: "Adestramento de animais"},
                 {value: 2, text: "Aulas Particulares"},
                 {value: 3, text: "Aulas ou cursos esportivos"},
                 {value: 4, text: "Buffet a Domicilio"},
                 {value: 5, text: "Criação de Sites, Aplicativos e afins"},
-                {value: 6, text: "Concerto De celulares"},
+                {value: 6, text: "Conserto De celulares"},
                 {value: 7, text: "Decoração de interiores"},
                 {value: 8, text: "Frete"},
                 {value: 9, text: "Manuntenção de computadores"},  
