@@ -277,13 +277,20 @@ app.controller('LeilaoController', function ($scope, $http, $rootScope)
     };
 
     $scope.opCategorias =
-    [
-                {value: 1, text: "Serviços Gerais"},
-                {value: 2, text: "Serviços de Manutenção Predial"},
-                {value: 3, text: "Serviços de Informática"},
-                {value: 4, text: "Serviços de Manufatura"},
-                {value: 5, text: "Serviços de Instação de ar condicionado"},
-                {value: 6, text: "Serviços Contabeis"},
+    [                {value: 1, text: "Adestramento de animais"},
+                {value: 2, text: "Aulas Particulares"},
+                {value: 3, text: "Aulas ou cursos esportivos"},
+                {value: 4, text: "Buffet a Domicilio"},
+                {value: 5, text: "Criação de Sites, Aplicativos e afins"},
+                {value: 6, text: "Concerto De celulares"},
+                {value: 7, text: "Decoração de interiores"},
+                {value: 8, text: "Frete"},
+                {value: 9, text: "Manuntenção de computadores"},  
+                {value: 10, text: "Serviços Contabeis"},
+                {value: 11, text: "Serviços Gerais"},
+                {value: 12, text: "Serviços de Instação de ar condicionado"},
+                {value: 13, text: "Serviços de Manufatura"},
+                {value: 14, text: "Serviços de Manutenção Predial"},
                 {value: 5555, text: "Serviços de Diversos (Outros)"}
             ];
 
